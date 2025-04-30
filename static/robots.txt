@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# 允许所有搜索引擎访问网站的大部分内容
+# 禁止访问管理员和私有页面
+
+# 网站地图位置
+Sitemap: https://curl2json.example.com/sitemap.xml

@@ -131,6 +131,16 @@ def index():
     """渲染主页"""
     return render_template('index.html')
 
+@app.route('/robots.txt')
+def robots():
+    """提供robots.txt文件"""
+    return app.send_static_file('robots.txt')
+
+@app.route('/sitemap.xml')
+def sitemap():
+    """提供sitemap.xml文件"""
+    return app.send_static_file('sitemap.xml')
+
 @app.route('/api/convert', methods=['POST'])
 def convert():
     """API端点：将curl命令转换为JSON"""
