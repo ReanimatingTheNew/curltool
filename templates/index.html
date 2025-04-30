@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curl 转 JSON 工具</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/highlight.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/json.min.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Curl 转 JSON 工具</h1>
+            <p>将 curl 命令转换为 JSON 格式，便于分析和处理</p>
+        </header>
+
+        <main>
+            <div class="converter-box">
+                <div class="input-section">
+                    <h2>输入 curl 命令</h2>
+                    <textarea id="curlInput" placeholder="在这里粘贴您的 curl 命令，例如：curl -X POST https://api.example.com -H 'Content-Type: application/json' -d '{\"key\":\"value\"}'"></textarea>
+                    <div class="buttons">
+                        <button id="convertBtn">转换</button>
+                        <button id="clearBtn">清除</button>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <h2>JSON 结果</h2>
+                    <div class="output-controls">
+                        <button id="copyBtn">复制</button>
+                        <button id="formatBtn">格式化</button>
+                    </div>
+                    <pre><code id="jsonOutput" class="json">// 转换结果将显示在这里</code></pre>
+                </div>
+            </div>
+
+            <div class="api-section">
+                <h2>API 使用说明</h2>
+                <div class="api-info">
+                    <h3>接口地址</h3>
+                    <code>POST /api/convert</code>
+                    
+                    <h3>请求格式</h3>
+                    <pre><code class="json">{
+    "curl": "your curl command here"
+}</code></pre>
+                    
+                    <h3>响应格式</h3>
+                    <pre><code class="json">{
+    "method": "POST",
+    "url": "https://api.example.com",
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "data": {
+        "key": "value"
+    }
+}</code></pre>
+
+                    <h3>示例代码</h3>
+                    <div class="code-tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" data-tab="js">JavaScript</button>
+                            <button class="tab-btn" data-tab="python">Python</button>
+                            <button class="tab-btn" data-tab="curl">Curl</button>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="js">
+<pre><code class="javascript">fetch('/api/convert', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        curl: 'curl -X POST https://api.example.com -H "Content-Type: application/json" -d \'{"key":"value"}\''
+    })
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));</code></pre>
+                            </div>
+                            <div class="tab-pane" id="python">
+<pre><code class="python">import requests
+import json
+
+url = "http://localhost:5000/api/convert"
+payload = {
+    "curl": 'curl -X POST https://api.example.com -H "Content-Type: application/json" -d \'{"key":"value"}\''
+}
+headers = {
+    "Content-Type": "application/json"
+}
+
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())</code></pre>
+                            </div>
+                            <div class="tab-pane" id="curl">
+<pre><code class="bash">curl -X POST http://localhost:5000/api/convert \
+  -H "Content-Type: application/json" \
+  -d '{"curl": "curl -X POST https://api.example.com -H \"Content-Type: application/json\" -d \"{\\\"key\\\":\\\"value\\\"}\""}' </code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 Curl 转 JSON 工具 | 一个简单高效的 API 调试工具</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
