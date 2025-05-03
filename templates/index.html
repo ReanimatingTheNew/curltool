@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- TDK优化 - 优化meta描述长度为140-160字符 -->
-    <title>Curl转JSON工具 | 在线快速转换curl命令为JSON格式</title>
-    <meta name="description" content="Curl转JSON工具可快速将curl命令转换为结构化JSON格式，支持各种复杂参数解析。提供简洁的Web界面和API接口，帮助开发者高效分析和处理HTTP请求。">
-    <meta name="keywords" content="curl转json,curl命令解析,API调试工具,HTTP请求分析">
+    <title>Curl to JSON Tool | Convert curl commands to JSON format online</title>
+    <meta name="description" content="Curl to JSON Tool quickly converts curl commands to structured JSON format, supporting various complex parameter parsing. Provides a clean web interface and API for developers to efficiently analyze and process HTTP requests.">
+    <meta name="keywords" content="curl to json,curl command parser,API debugging tool,HTTP request analysis">
     
     <!-- 社交媒体标签 - Open Graph -->
-    <meta property="og:title" content="Curl转JSON工具 | 在线快速转换curl命令为JSON格式">
-    <meta property="og:description" content="快速将curl命令转换为结构化JSON格式，支持各种复杂参数解析。提供简洁的Web界面和API接口。">
+    <meta property="og:title" content="Curl to JSON Tool | Convert curl commands to JSON format online">
+    <meta property="og:description" content="Quickly convert curl commands to structured JSON format, supporting various complex parameter parsing. Provides a clean web interface and API.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://curl2json.example.com/">
-    <meta property="og:image" content="https://curl2json.example.com/static/images/curl2json-og.png">
-    <meta property="og:site_name" content="Curl转JSON工具">
+    <meta property="og:url" content="https://curl-to.com/">
+    <meta property="og:image" content="https://curl-to.com/static/images/curl2json-og.png">
+    <meta property="og:site_name" content="Curl to JSON Tool">
     
     <!-- 社交媒体标签 - Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Curl转JSON工具 | 在线快速转换curl命令为JSON格式">
-    <meta name="twitter:description" content="快速将curl命令转换为结构化JSON格式，支持各种复杂参数解析。提供简洁的Web界面和API接口。">
-    <meta name="twitter:image" content="https://curl2json.example.com/static/images/curl2json-twitter.png">
+    <meta name="twitter:title" content="Curl to JSON Tool | Convert curl commands to JSON format online">
+    <meta name="twitter:description" content="Quickly convert curl commands to structured JSON format, supporting various complex parameter parsing. Provides a clean web interface and API.">
+    <meta name="twitter:image" content="https://curl-to.com/static/images/curl2json-twitter.png">
     <!-- 规范化URL -->
-    <link rel="canonical" href="https://curl2json.example.com/">
+    <link rel="canonical" href="https://curl-to.com/">
     <!-- 移动设备兼容性 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- favicon -->
@@ -42,7 +42,7 @@
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Curl转JSON工具",
-      "url": "https://curl2json.example.com/",
+      "url": "https://curl-to.com/",
       "description": "在线快速将curl命令转换为JSON格式，支持多种参数解析，并提供API接口便于集成。",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "All",
@@ -58,15 +58,26 @@
     <div class="container">
         <!-- 使用语义化标签结构 -->
         <header>
-            <h1>Curl转JSON工具</h1>
-            <p>将curl命令转换为JSON格式，便于开发者快速分析和处理HTTP请求</p>
+            <h1 data-i18n="site_title">Curl to JSON Tool</h1>
+            <p data-i18n="site_description">Convert curl commands to JSON format for quick analysis and processing of HTTP requests</p>
             <!-- 添加导航菜单 -->
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#tool-section">在线转换工具</a></li>
-                    <li><a href="#api-section">API文档</a></li>
-                    <li><a href="#examples-section">使用示例</a></li>
-                    <li><a href="#about-section">关于工具</a></li>
+                    <li><a href="#tool-section" data-i18n="nav_tool">Online Converter</a></li>
+                    <li><a href="#api-section" data-i18n="nav_api">API Docs</a></li>
+                    <li><a href="#examples-section" data-i18n="nav_examples">Examples</a></li>
+                    <li><a href="#about-section" data-i18n="nav_about">About</a></li>
+                    <li class="language-selector-container">
+                        <label for="language-selector" data-i18n="language_switch">Language:</label>
+                        <select id="language-selector">
+                            <option value="en" data-i18n="lang_en">English</option>
+                            <option value="zh" data-i18n="lang_zh">中文</option>
+                            <option value="hi" data-i18n="lang_hi">हिन्दी</option>
+                            <option value="fr" data-i18n="lang_fr">Français</option>
+                            <option value="de" data-i18n="lang_de">Deutsch</option>
+                            <option value="es" data-i18n="lang_es">Español</option>
+                        </select>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -74,73 +85,73 @@
         <main>
             <!-- 添加页面内容目录 -->
             <section class="page-toc">
-                <h2>内容目录</h2>
-                <nav aria-label="页面目录">
+                <h2 data-i18n="toc_title">Table of Contents</h2>
+                <nav aria-label="Page Table of Contents">
                     <ol>
-                        <li><a href="#tool-section">在线转换工具</a></li>
-                        <li><a href="#api-section">API使用说明</a>
+                        <li><a href="#tool-section" data-i18n="toc_tool">Online Converter</a></li>
+                        <li><a href="#api-section" data-i18n="toc_api">API Documentation</a>
                             <ol>
-                                <li><a href="#api-endpoint">接口地址</a></li>
-                                <li><a href="#request-format">请求格式</a></li>
-                                <li><a href="#response-format">响应格式</a></li>
+                                <li><a href="#api-endpoint" data-i18n="toc_api_endpoint">Endpoint</a></li>
+                                <li><a href="#request-format" data-i18n="toc_request_format">Request Format</a></li>
+                                <li><a href="#response-format" data-i18n="toc_response_format">Response Format</a></li>
                             </ol>
                         </li>
-                        <li><a href="#examples-section">使用示例</a></li>
-                        <li><a href="#about-section">关于工具</a></li>
+                        <li><a href="#examples-section" data-i18n="toc_examples">Examples</a></li>
+                        <li><a href="#about-section" data-i18n="toc_about">About</a></li>
                     </ol>
                 </nav>
             </section>
 
             <!-- 转换工具区域 -->
             <section id="tool-section" class="converter-box">
-                <h2>在线转换工具</h2>
-                <p>在下面的输入框中粘贴您的curl命令，点击“转换”按钮即可获得结构化的JSON格式。支持各种复杂的curl参数和选项。</p>
+                <h2 data-i18n="tool_title">Online Converter</h2>
+                <p data-i18n="tool_description">Paste your curl command in the input box below, click the "Convert" button to get structured JSON format. Supports various complex curl parameters and options.</p>
                 
                 <div class="input-section">
-                    <h3>输入curl命令</h3>
-                    <textarea id="curlInput" placeholder="在这里粘贴您的curl命令，例如：curl -X POST https://api.example.com -H 'Content-Type: application/json' -d '{\"key\":\"value\"}'" aria-label="输入curl命令"></textarea>
+                    <h3 data-i18n="input_title">Enter curl command</h3>
+                    <textarea id="curlInput" data-i18n-placeholder="input_placeholder" placeholder="Paste your curl command here, for example: curl -X POST https://curl-to.com -H 'Content-Type: application/json' -d '{\"key\":\"value\"}'" aria-label="Enter curl command"></textarea>
                     <div class="buttons">
-                        <button id="convertBtn" aria-label="转换curl命令">转换</button>
-                        <button id="clearBtn" aria-label="清除输入内容">清除</button>
+                        <button id="convertBtn" data-i18n="btn_convert" aria-label="Convert curl command">Convert</button>
+                        <button id="clearBtn" data-i18n="btn_clear" aria-label="Clear input content">Clear</button>
                     </div>
                 </div>
 
                 <div class="output-section">
-                    <h3>JSON结果</h3>
+                    <h3 data-i18n="output_title">JSON Result</h3>
                     <div class="output-controls">
-                        <button id="copyBtn" aria-label="复制JSON结果">复制</button>
-                        <button id="formatBtn" aria-label="格式化JSON结果">格式化</button>
+                        <button id="copyBtn" data-i18n="btn_copy" aria-label="Copy JSON result">Copy</button>
+                        <button id="formatBtn" data-i18n="btn_format" aria-label="Format JSON result">Format</button>
                     </div>
-                    <pre><code id="jsonOutput" class="json">// 转换结果将显示在这里</code></pre>
+                    <pre><code id="jsonOutput" class="json" data-i18n="output_placeholder">// Conversion result will be displayed here</code></pre>
                 </div>
             </section>
 
             <section id="api-section" class="api-section">
-                <h2>API使用说明</h2>
-                <p>本工具提供了简单易用的API接口，可以集成到您的应用程序中，实现自动化的curl命令解析和转换。</p>
+                <h2 data-i18n="api_title">API Documentation</h2>
+                <p data-i18n="api_description">This tool provides a simple and easy-to-use API interface that can be integrated into your application for automated curl command parsing and conversion.</p>
                 
                 <article class="api-info">
-                    <h3 id="api-endpoint">接口地址</h3>
-                    <p>使用以下HTTP请求方法和路径访问接口：</p>
+                    <h3 id="api-endpoint" data-i18n="api_endpoint_title">Endpoint</h3>
+                    <p data-i18n="api_endpoint_desc">Use the following HTTP request method and path to access the API:</p>
                     <code>POST /api/convert</code>
                     
-                    <h3 id="request-format">请求格式</h3>
-                    <p>请求体应为JSON格式，包含一个<code>curl</code>字段，值为要解析的curl命令字符串：</p>
+                    <h3 id="request-format" data-i18n="request_format_title">Request Format</h3>
+                    <p data-i18n="request_format_desc">The request body should be in JSON format, containing a <code>curl</code> field with the curl command string to be parsed:</p>
                     <pre><code class="json">{
     "curl": "your curl command here"
 }</code></pre>
                     
-                    <h3 id="response-format">响应格式</h3>
-                    <p>响应内容为结构化的JSON对象，包含以下字段：</p>
+                    <h3 id="response-format" data-i18n="response_format_title">Response Format</h3>
+                    <p data-i18n="response_format_desc">The response content is a structured JSON object containing the following fields:</p>
                     <ul>
-                        <li><strong>method</strong>: HTTP请求方法</li>
-                        <li><strong>url</strong>: 请求URL</li>
-                        <li><strong>headers</strong>: 请求头信息</li>
-                        <li><strong>data</strong>: 请求数据</li>
+                        <li><strong>method</strong>: <span data-i18n="response_method">HTTP request method</span></li>
+                        <li><strong>url</strong>: <span data-i18n="response_url">Request URL</span></li>
+                        <li><strong>headers</strong>: <span data-i18n="response_headers">Request headers</span></li>
+                        <li><strong>data</strong>: <span data-i18n="response_data">Request data</span></li>
                     </ul>
                     <pre><code class="json">{
     "method": "POST",
-    "url": "https://api.example.com",
+    "url": "https://curl-to.com",
     "headers": {
         "Content-Type": "application/json"
     },
@@ -149,8 +160,8 @@
     }
 }</code></pre>
 
-                    <h3 id="examples-section">示例代码</h3>
-                    <p>以下是不同编程语言中调用本工具API的示例代码：</p>
+                    <h3 id="examples-section" data-i18n="examples_title">Example Code</h3>
+                    <p data-i18n="examples_description">Here are examples of calling this tool's API in different programming languages:</p>
                     <div class="code-tabs">
                         <div class="tab-buttons">
                             <button class="tab-btn active" data-tab="js">JavaScript</button>
@@ -165,7 +176,7 @@
         'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-        curl: 'curl -X POST https://api.example.com -H "Content-Type: application/json" -d \'{"key":"value"}\''
+        curl: 'curl -X POST https://curl-to.com -H "Content-Type: application/json" -d \'{"key":"value"}\''
     })
 })
 .then(response => response.json())
@@ -176,9 +187,9 @@
 <pre><code class="python">import requests
 import json
 
-url = "http://localhost:5000/api/convert"
+url = "http://curl-to.com/api/convert"
 payload = {
-    "curl": 'curl -X POST https://api.example.com -H "Content-Type: application/json" -d \'{"key":"value"}\''
+    "curl": 'curl -X POST https://curl-to.com -H "Content-Type: application/json" -d \'{"key":"value"}\''
 }
 headers = {
     "Content-Type": "application/json"
@@ -188,9 +199,9 @@ response = requests.post(url, headers=headers, data=json.dumps(payload))
 print(response.json())</code></pre>
                             </div>
                             <div class="tab-pane" id="curl">
-<pre><code class="bash">curl -X POST http://localhost:5000/api/convert \
+<pre><code class="bash">curl -X POST http://curl-to.com/api/convert \
   -H "Content-Type: application/json" \
-  -d '{"curl": "curl -X POST https://api.example.com -H \"Content-Type: application/json\" -d \"{\\\"key\\\":\\\"value\\\"}\""}' </code></pre>
+  -d '{"curl": "curl -X POST https://curl-to.com -H \"Content-Type: application/json\" -d \"{\\\"key\\\":\\\"value\\\"}\""}' </code></pre>
                             </div>
                         </div>
                     </div>
@@ -199,26 +210,26 @@ print(response.json())</code></pre>
             
             <!-- 关于工具部分 -->
             <section id="about-section" class="about-section">
-                <h2>关于Curl转JSON工具</h2>
-                <p>Curl转JSON工具是一个专为开发者设计的在线实用工具，旨在简化API调试和HTTP请求分析过程。通过将复杂的curl命令转换为结构化的JSON格式，开发者可以更轻松地理解和处理HTTP请求。</p>
+                <h2 data-i18n="about_title">About Curl to JSON Tool</h2>
+                <p data-i18n="about_description">Curl to JSON Tool is an online utility designed specifically for developers, aimed at simplifying API debugging and HTTP request analysis. By converting complex curl commands into structured JSON format, developers can more easily understand and process HTTP requests.</p>
                 
                 <div class="features">
-                    <h3>主要功能</h3>
+                    <h3 data-i18n="features_title">Key Features</h3>
                     <ul>
-                        <li><strong>快速转换</strong> - 将curl命令即时转换为JSON格式</li>
-                        <li><strong>全面解析</strong> - 支持多种curl参数，如请求方法、头信息、数据等</li>
-                        <li><strong>API接口</strong> - 提供简单易用的API，便于集成到其他系统</li>
-                        <li><strong>用户友好</strong> - 直观的界面设计和交互体验</li>
+                        <li><strong data-i18n="feature_1">Fast Conversion</strong> - Convert curl commands to JSON format instantly</li>
+                        <li><strong data-i18n="feature_2">Comprehensive Parsing</strong> - Support for various curl parameters such as request methods, headers, data, etc.</li>
+                        <li><strong data-i18n="feature_3">API Interface</strong> - Provides a simple and easy-to-use API for integration with other systems</li>
+                        <li><strong data-i18n="feature_4">User Friendly</strong> - Intuitive interface design and interaction experience</li>
                     </ul>
                 </div>
                 
                 <div class="use-cases">
-                    <h3>适用场景</h3>
+                    <h3 data-i18n="use_cases_title">Use Cases</h3>
                     <ul>
-                        <li>API开发和测试</li>
-                        <li>网络请求调试</li>
-                        <li>自动化脚本编写</li>
-                        <li>学习HTTP协议</li>
+                        <li data-i18n="use_case_1">API Development and Testing</li>
+                        <li data-i18n="use_case_2">Network Request Debugging</li>
+                        <li data-i18n="use_case_3">Automation Script Writing</li>
+                        <li data-i18n="use_case_4">Learning HTTP Protocol</li>
                     </ul>
                 </div>
             </section>
@@ -227,25 +238,27 @@ print(response.json())</code></pre>
         <footer>
             <div class="footer-content">
                 <div class="footer-nav">
-                    <h3>快速导航</h3>
+                    <h3 data-i18n="footer_nav_title">Quick Navigation</h3>
                     <nav>
                         <ul>
-                            <li><a href="#tool-section">在线转换工具</a></li>
-                            <li><a href="#api-section">API文档</a></li>
-                            <li><a href="#examples-section">使用示例</a></li>
-                            <li><a href="#about-section">关于工具</a></li>
+                            <li><a href="#tool-section" data-i18n="nav_tool">Online Converter</a></li>
+                            <li><a href="#api-section" data-i18n="nav_api">API Docs</a></li>
+                            <li><a href="#examples-section" data-i18n="nav_examples">Examples</a></li>
+                            <li><a href="#about-section" data-i18n="nav_about">About</a></li>
                         </ul>
                     </nav>
                 </div>
                 
                 <div class="footer-info">
-                    <p>© 2025 Curl转JSON工具 | 一个简单高效的API调试工具</p>
-                    <p>本工具旨在帮助开发者更高效地处理HTTP请求，提升开发和调试效率。</p>
+                    <p data-i18n="footer_copyright">© 2025 Curl to JSON Tool | A simple and efficient API debugging tool</p>
+                    <p data-i18n="footer_description">This tool is designed to help developers handle HTTP requests more efficiently, improving development and debugging productivity.</p>
                 </div>
             </div>
         </footer>
     </div>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/translations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/language.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 </body>
 </html>

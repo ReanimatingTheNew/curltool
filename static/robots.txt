@@ -7,4 +7,4 @@ Disallow: /private/
 # 禁止访问管理员和私有页面
 
 # 网站地图位置
-Sitemap: https://curl2json.example.com/sitemap.xml
+Sitemap: https://curl-to.com/sitemap.xml
