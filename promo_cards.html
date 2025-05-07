@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curl to JSON 工具 - 宣传闪卡</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                            950: '#1e1b4b',
+                        },
+                        secondary: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
+            }
+            .card-gradient-1 {
+                background-image: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            }
+            .card-gradient-2 {
+                background-image: linear-gradient(135deg, #3b82f6 0%, #2dd4bf 100%);
+            }
+            .card-gradient-3 {
+                background-image: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+            }
+            .card-gradient-4 {
+                background-image: linear-gradient(135deg, #f97316 0%, #eab308 100%);
+            }
+            .card-gradient-5 {
+                background-image: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            }
+            .card-overlay {
+                background-color: rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(2px);
+            }
+            .aspect-3-2 {
+                aspect-ratio: 3/2;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <div class="container mx-auto px-4 py-12 max-w-7xl">
+        <h1 class="text-4xl font-bold text-center mb-12 text-gray-800 relative">
+            <span class="inline-block relative">
+                Curl to JSON 工具 - 宣传闪卡
+                <span class="absolute -bottom-2 left-0 w-full h-1 bg-primary-500 rounded"></span>
+            </span>
+        </h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <!-- 卡片1：核心功能 -->
+            <div id="card1" class="group relative overflow-hidden rounded-xl shadow-lg transition-all duration-500 hover:shadow-2xl aspect-3-2 card-gradient-1">
+                <!-- 装饰元素 -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-10 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-700 delay-100"></div>
+                
+                <div class="absolute inset-0 p-8 flex flex-col justify-center items-center text-center text-white z-10">
+                    <div class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-float">🔄</div>
+                    <h2 class="text-3xl font-bold mb-4 text-shadow-lg">
+                        Curl命令一键转JSON
+                    </h2>
+                    <p class="text-lg mb-8 max-w-md opacity-90 leading-relaxed">
+                        快速将复杂的curl命令转换为结构化的JSON格式，提高API开发和测试效率
+                    </p>
+                    <a href="https://curl-to.com" class="inline-block bg-white text-primary-600 font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:bg-gray-50">
+                        立即体验
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 卡片2：开发者效率 -->
+            <div id="card2" class="group relative overflow-hidden rounded-xl shadow-lg transition-all duration-500 hover:shadow-2xl aspect-3-2 card-gradient-2">
+                <!-- 装饰元素 -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-10 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-700 delay-100"></div>
+                
+                <div class="absolute inset-0 p-8 flex flex-col justify-center items-center text-center text-white z-10">
+                    <div class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-pulse-slow">⚡</div>
+                    <h2 class="text-3xl font-bold mb-4 text-shadow-lg">
+                        提升开发效率
+                    </h2>
+                    <p class="text-lg mb-8 max-w-md opacity-90 leading-relaxed">
+                        节省手动解析curl命令的时间，让您专注于API逻辑而非格式转换
+                    </p>
+                    <a href="https://curl-to.com" class="inline-block bg-white text-primary-600 font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:bg-gray-50">
+                        提升效率
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 卡片3：API集成 -->
+            <div id="card3" class="group relative overflow-hidden rounded-xl shadow-lg transition-all duration-500 hover:shadow-2xl aspect-3-2 card-gradient-3">
+                <!-- 装饰元素 -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-10 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-700 delay-100"></div>
+                
+                <div class="absolute inset-0 p-8 flex flex-col justify-center items-center text-center text-white z-10">
+                    <div class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-float">🔌</div>
+                    <h2 class="text-3xl font-bold mb-4 text-shadow-lg">
+                        便捷的API集成
+                    </h2>
+                    <p class="text-lg mb-8 max-w-md opacity-90 leading-relaxed">
+                        提供RESTful API接口，轻松集成到您的应用程序和自动化工作流中
+                    </p>
+                    <a href="https://curl-to.com/api-docs" class="inline-block bg-white text-primary-600 font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:bg-gray-50">
+                        查看API文档
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 卡片4：多语言支持 -->
+            <div id="card4" class="group relative overflow-hidden rounded-xl shadow-lg transition-all duration-500 hover:shadow-2xl aspect-3-2 card-gradient-4">
+                <!-- 装饰元素 -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-10 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-700 delay-100"></div>
+                
+                <div class="absolute inset-0 p-8 flex flex-col justify-center items-center text-center text-white z-10">
+                    <div class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-bounce-slow">🌐</div>
+                    <h2 class="text-3xl font-bold mb-4 text-shadow-lg">
+                        多语言支持
+                    </h2>
+                    <p class="text-lg mb-8 max-w-md opacity-90 leading-relaxed">
+                        界面支持英文、中文、印地语、法语、德语和西班牙语，满足全球开发者需求
+                    </p>
+                    <a href="https://curl-to.com" class="inline-block bg-white text-primary-600 font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:bg-gray-50">
+                        切换语言
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 卡片5：开源免费 -->
+            <div id="card5" class="group relative overflow-hidden rounded-xl shadow-lg transition-all duration-500 hover:shadow-2xl aspect-3-2 card-gradient-5 md:col-span-2 mx-auto max-w-2xl">
+                <!-- 装饰元素 -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-10 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-700 delay-100"></div>
+                
+                <div class="absolute inset-0 p-8 flex flex-col justify-center items-center text-center text-white z-10">
+                    <div class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-float">🔓</div>
+                    <h2 class="text-3xl font-bold mb-4 text-shadow-lg">
+                        开源免费
+                    </h2>
+                    <p class="text-lg mb-8 max-w-md opacity-90 leading-relaxed">
+                        完全开源的工具，可以免费使用和定制，欢迎在GitHub上贡献代码
+                    </p>
+                    <a href="https://github.com/ReanimatingTheNew/curl-to-everything" class="inline-block bg-white text-primary-600 font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:bg-gray-50">
+                        GitHub仓库
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl p-8 shadow-lg mb-16">
+            <h2 class="text-3xl font-bold text-center mb-6 text-primary-800">下载宣传卡片</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">点击下方按钮下载单张卡片，或者右键点击卡片直接保存图片。这些卡片设计用于在各种社交媒体和开发者平台上分享。</p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="downloadCard(1)" class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    下载卡片1
+                </button>
+                <button onclick="downloadCard(2)" class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    下载卡片2
+                </button>
+                <button onclick="downloadCard(3)" class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    下载卡片3
+                </button>
+                <button onclick="downloadCard(4)" class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    下载卡片4
+                </button>
+                <button onclick="downloadCard(5)" class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    下载卡片5
+                </button>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-8 shadow-lg mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 relative inline-block">
+                使用说明
+                <span class="absolute -bottom-2 left-0 w-full h-1 bg-primary-500 rounded"></span>
+            </h2>
+            
+            <p class="text-gray-600 mb-6 leading-relaxed">这些宣传卡片设计用于在各种社交媒体和开发者平台上分享，以提高Curl to JSON工具的知名度。</p>
+            
+            <h3 class="text-xl font-bold mb-4 text-primary-700">分享建议：</h3>
+            
+            <ul class="space-y-3 mb-6">
+                <li class="flex items-start">
+                    <svg class="h-6 w-6 text-primary-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="text-gray-700">在Twitter、Facebook、LinkedIn等社交媒体上分享</span>
+                </li>
+                <li class="flex items-start">
+                    <svg class="h-6 w-6 text-primary-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="text-gray-700">发布到开发者社区如Stack Overflow、GitHub、Dev.to</span>
+                </li>
+                <li class="flex items-start">
+                    <svg class="h-6 w-6 text-primary-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="text-gray-700">在技术博客文章中引用</span>
+                </li>
+                <li class="flex items-start">
+                    <svg class="h-6 w-6 text-primary-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="text-gray-700">在技术演讲或工作坊中展示</span>
+                </li>
+                <li class="flex items-start">
+                    <svg class="h-6 w-6 text-primary-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="text-gray-700">添加到您的开发者工具集推荐列表中</span>
+                </li>
+            </ul>
+            
+            <div class="bg-primary-50 p-4 rounded-lg border-l-4 border-primary-500">
+                <p class="text-gray-700">每张卡片都突出了Curl to JSON工具的一个关键特性，您可以根据目标受众选择最合适的卡片进行分享。</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 页脚部分 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4 text-primary-400">Curl to JSON</h3>
+                    <p class="text-gray-400 mb-4">简化开发者的工作流程</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-100">产品</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://curl-to.com" class="text-gray-400 hover:text-white transition-colors duration-300">在线工具</a></li>
+                        <li><a href="https://curl-to.com/api-docs" class="text-gray-400 hover:text-white transition-colors duration-300">API文档</a></li>
+                        <li><a href="https://curl-to.com/examples" class="text-gray-400 hover:text-white transition-colors duration-300">使用示例</a></li>
+                        <li><a href="https://curl-to.com/pricing" class="text-gray-400 hover:text-white transition-colors duration-300">定价</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-100">资源</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://curl-to.com/blog" class="text-gray-400 hover:text-white transition-colors duration-300">博客</a></li>
+                        <li><a href="https://curl-to.com/tutorials" class="text-gray-400 hover:text-white transition-colors duration-300">教程</a></li>
+                        <li><a href="https://curl-to.com/faq" class="text-gray-400 hover:text-white transition-colors duration-300">常见问题</a></li>
+                        <li><a href="https://curl-to.com/support" class="text-gray-400 hover:text-white transition-colors duration-300">支持</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-100">公司</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://curl-to.com/about" class="text-gray-400 hover:text-white transition-colors duration-300">关于我们</a></li>
+                        <li><a href="https://curl-to.com/contact" class="text-gray-400 hover:text-white transition-colors duration-300">联系我们</a></li>
+                        <li><a href="https://curl-to.com/privacy" class="text-gray-400 hover:text-white transition-colors duration-300">隐私政策</a></li>
+                        <li><a href="https://curl-to.com/terms" class="text-gray-400 hover:text-white transition-colors duration-300">服务条款</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 Curl to JSON 转换工具. 保留所有权利.</p>
+                <div class="flex space-x-6">
+                    <a href="https://curl-to.com" class="text-gray-400 hover:text-white text-sm transition-colors duration-300">官方网站</a>
+                    <a href="https://curl-to.com/terms" class="text-gray-400 hover:text-white text-sm transition-colors duration-300">服务条款</a>
+                    <a href="https://curl-to.com/privacy" class="text-gray-400 hover:text-white text-sm transition-colors duration-300">隐私政策</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 用于生成图片的canvas -->
+    <canvas id="canvas" class="hidden"></canvas>
+    
+    <!-- 加载html2canvas库 -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
+    <script>
+        // 下载卡片为图片的功能
+        function downloadCard(cardNumber) {
+            const card = document.getElementById('card' + cardNumber);
+            
+            // 显示加载提示
+            const loadingToast = document.createElement('div');
+            loadingToast.className = 'fixed bottom-4 right-4 bg-primary-600 text-white py-2 px-4 rounded-lg shadow-lg z-50 flex items-center';
+            loadingToast.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                正在生成图片...
+            `;
+            document.body.appendChild(loadingToast);
+            
+            // 使用html2canvas库将卡片转换为图片
+            html2canvas(card, {
+                allowTaint: true,
+                useCORS: true,
+                scale: 2, // 增加渲染质量
+                backgroundColor: null
+            }).then(function(canvas) {
+                // 创建下载链接
+                const link = document.createElement('a');
+                link.download = 'curl-to-json-card-' + cardNumber + '.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                
+                // 移除加载提示
+                document.body.removeChild(loadingToast);
+                
+                // 显示成功提示
+                const successToast = document.createElement('div');
+                successToast.className = 'fixed bottom-4 right-4 bg-green-600 text-white py-2 px-4 rounded-lg shadow-lg z-50 flex items-center';
+                successToast.innerHTML = `
+                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    卡片已下载成功!
+                `;
+                document.body.appendChild(successToast);
+                
+                // 3秒后移除成功提示
+                setTimeout(() => {
+                    document.body.removeChild(successToast);
+                }, 3000);
+            }).catch(function(error) {
+                console.error('Error generating image:', error);
+                
+                // 移除加载提示
+                document.body.removeChild(loadingToast);
+                
+                // 显示错误提示
+                const errorToast = document.createElement('div');
+                errorToast.className = 'fixed bottom-4 right-4 bg-red-600 text-white py-2 px-4 rounded-lg shadow-lg z-50 flex items-center';
+                errorToast.innerHTML = `
+                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    生成图片失败，请重试
+                `;
+                document.body.appendChild(errorToast);
+                
+                // 3秒后移除错误提示
+                setTimeout(() => {
+                    document.body.removeChild(errorToast);
+                }, 3000);
+            });
+        }
+        
+        // 添加卡片悬停效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加回到顶部按钮
+            const backToTopButton = document.createElement('button');
+            backToTopButton.className = 'fixed bottom-8 right-8 bg-primary-600 text-white p-3 rounded-full shadow-lg opacity-0 transition-opacity duration-300 hover:bg-primary-700 focus:outline-none';
+            backToTopButton.innerHTML = `
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                </svg>
+            `;
+            backToTopButton.style.display = 'none';
+            document.body.appendChild(backToTopButton);
+            
+            // 滚动事件处理
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.style.display = 'block';
+                    setTimeout(() => {
+                        backToTopButton.style.opacity = '1';
+                    }, 50);
+                } else {
+                    backToTopButton.style.opacity = '0';
+                    setTimeout(() => {
+                        backToTopButton.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -35,6 +35,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.min.css">
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/highlight.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/json.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/python.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/javascript.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/php.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/java.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/csharp.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/rust.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/swift.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/go.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/ruby.min.js" defer></script>
     
     <!-- 结构化数据标记 -->
     <script type="application/ld+json">
@@ -88,68 +97,280 @@
                 <h2 data-i18n="toc_title">Table of Contents</h2>
                 <nav aria-label="Page Table of Contents">
                     <ol>
-                        <li><a href="#tool-section" data-i18n="toc_tool">Online Converter</a></li>
+                        <li><a href="#tool-section" data-i18n="toc_tool">Online Converter</a>
+                            <ol>
+                                <li><a href="#curl-to-json" data-i18n="toc_curl_to_json">Curl to JSON</a></li>
+                                <li><a href="#code-to-curl" data-i18n="toc_code_to_curl">Code to Curl</a></li>
+                            </ol>
+                        </li>
+                        <li><a href="#examples-section" data-i18n="toc_examples">Examples</a></li>
                         <li><a href="#api-section" data-i18n="toc_api">API Documentation</a>
                             <ol>
-                                <li><a href="#api-endpoint" data-i18n="toc_api_endpoint">Endpoint</a></li>
+                                <li><a href="#api-endpoint" data-i18n="toc_api_endpoint">Endpoints</a></li>
                                 <li><a href="#request-format" data-i18n="toc_request_format">Request Format</a></li>
                                 <li><a href="#response-format" data-i18n="toc_response_format">Response Format</a></li>
                             </ol>
                         </li>
-                        <li><a href="#examples-section" data-i18n="toc_examples">Examples</a></li>
                         <li><a href="#about-section" data-i18n="toc_about">About</a></li>
                     </ol>
                 </nav>
             </section>
 
             <!-- 转换工具区域 -->
-            <section id="tool-section" class="converter-box">
+            <section id="tool-section" class="tool-section">
                 <h2 data-i18n="tool_title">Online Converter</h2>
-                <p data-i18n="tool_description">Paste your curl command in the input box below, click the "Convert" button to get structured JSON format. Supports various complex curl parameters and options.</p>
+                <p data-i18n="tool_description">Choose the conversion type below and paste your code or curl command to convert.</p>
                 
-                <div class="input-section">
-                    <h3 data-i18n="input_title">Enter curl command</h3>
-                    <textarea id="curlInput" data-i18n-placeholder="input_placeholder" placeholder="Paste your curl command here, for example: curl -X POST https://curl-to.com -H 'Content-Type: application/json' -d '{\"key\":\"value\"}'" aria-label="Enter curl command"></textarea>
-                    <div class="buttons">
-                        <button id="convertBtn" data-i18n="btn_convert" aria-label="Convert curl command">Convert</button>
-                        <button id="clearBtn" data-i18n="btn_clear" aria-label="Clear input content">Clear</button>
+                <!-- 转换类型选择 -->
+                <div class="conversion-type">
+                    <button id="curlToJsonBtn" class="type-btn active" data-i18n="btn_curl_to_json">Curl to JSON</button>
+                    <button id="codeToCurlBtn" class="type-btn" data-i18n="btn_code_to_curl">Code to Curl</button>
+                </div>
+                
+                <!-- Curl to JSON/Code 转换 -->
+                <div id="curl-to-json" class="converter-box active">
+                    <h3 data-i18n="curl_to_json_title">Convert Curl to JSON/Code</h3>
+                    <p data-i18n="curl_to_json_description">Paste your curl command in the input box below, click the "Convert" button to get structured JSON format or code in your preferred programming language.</p>
+                    
+                    <!-- 输出格式选择 -->
+                    <div class="output-format-selection">
+                        <label for="outputFormat" data-i18n="output_format_label">Output format:</label>
+                        <select id="outputFormat">
+                            <option value="json" data-i18n="format_json">JSON</option>
+                            <option value="python" data-i18n="format_python">Python</option>
+                            <option value="javascript" data-i18n="format_javascript">JavaScript</option>
+                            <option value="nodejs" data-i18n="format_nodejs">Node.js</option>
+                            <option value="php" data-i18n="format_php">PHP</option>
+                            <option value="java" data-i18n="format_java">Java</option>
+                            <option value="csharp" data-i18n="format_csharp">C#</option>
+                            <option value="rust" data-i18n="format_rust">Rust</option>
+                            <option value="swift" data-i18n="format_swift">Swift</option>
+                            <option value="go" data-i18n="format_go">Go</option>
+                            <option value="ruby" data-i18n="format_ruby">Ruby</option>
+                        </select>
+                    </div>
+                    
+                    <!-- 预设示例选择 -->
+                    <div class="examples-dropdown">
+                        <label for="curlExamples" data-i18n="examples_label">Try an example:</label>
+                        <select id="curlExamples">
+                            <option value="" data-i18n="examples_select">Select an example</option>
+                            <option value="curl -X GET https://api.example.com/users" data-i18n="example_get">Simple GET request</option>
+                            <option value="curl -X POST https://api.example.com/users -H 'Content-Type: application/json' -d '{\"name\":\"John\",\"email\":\"john@example.com\"}'" data-i18n="example_post_json">POST with JSON data</option>
+                            <option value="curl -X PUT https://api.example.com/users/123 -H 'Authorization: Bearer token123' -H 'Content-Type: application/json' -d '{\"name\":\"Updated Name\"}'" data-i18n="example_put_auth">PUT with Authorization</option>
+                            <option value="curl -X DELETE https://api.example.com/users/123 -H 'Authorization: Bearer token123'" data-i18n="example_delete">DELETE request</option>
+                            <option value="curl -X POST https://api.example.com/upload -F 'file=@/path/to/file.jpg' -F 'description=Profile picture'" data-i18n="example_form_data">Form data upload</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-section">
+                        <h4 data-i18n="input_title">Enter curl command</h4>
+                        <textarea id="curlInput" data-i18n-placeholder="input_placeholder" placeholder="Paste your curl command here, for example: curl -X POST https://curl-to.com -H 'Content-Type: application/json' -d '{\"key\":\"value\"}'" aria-label="Enter curl command"></textarea>
+                        <div class="buttons">
+                            <button id="convertBtn" data-i18n="btn_convert" aria-label="Convert curl command">Convert</button>
+                            <button id="clearBtn" data-i18n="btn_clear" aria-label="Clear input content">Clear</button>
+                        </div>
+                    </div>
+
+                    <div class="output-section">
+                        <h4 id="outputTitle" data-i18n="output_title">JSON Result</h4>
+                        <div class="output-controls">
+                            <button id="copyBtn" data-i18n="btn_copy" aria-label="Copy result">Copy</button>
+                            <button id="formatBtn" data-i18n="btn_format" aria-label="Format result">Format</button>
+                        </div>
+                        <pre><code id="jsonOutput" class="json" data-i18n="output_placeholder">// Conversion result will be displayed here</code></pre>
                     </div>
                 </div>
-
-                <div class="output-section">
-                    <h3 data-i18n="output_title">JSON Result</h3>
-                    <div class="output-controls">
-                        <button id="copyBtn" data-i18n="btn_copy" aria-label="Copy JSON result">Copy</button>
-                        <button id="formatBtn" data-i18n="btn_format" aria-label="Format JSON result">Format</button>
+                
+                <!-- Code to Curl 转换 -->
+                <div id="code-to-curl" class="converter-box">
+                    <h3 data-i18n="code_to_curl_title">Convert Code to Curl</h3>
+                    <p data-i18n="code_to_curl_description">Paste your code in the input box below, select the language, and click the "Convert" button to get the equivalent curl command.</p>
+                    
+                    <!-- 语言选择 -->
+                    <div class="language-selection">
+                        <label for="codeLanguage" data-i18n="language_label">Select language:</label>
+                        <select id="codeLanguage">
+                            <option value="python" data-i18n="lang_python">Python</option>
+                            <option value="javascript" data-i18n="lang_javascript">JavaScript</option>
+                            <option value="php" data-i18n="lang_php">PHP</option>
+                        </select>
                     </div>
-                    <pre><code id="jsonOutput" class="json" data-i18n="output_placeholder">// Conversion result will be displayed here</code></pre>
+                    
+                    <!-- 预设示例选择 -->
+                    <div class="examples-dropdown">
+                        <label for="codeExamples" data-i18n="examples_label">Try an example:</label>
+                        <select id="codeExamples">
+                            <option value="" data-i18n="examples_select">Select an example</option>
+                            <option value="python-get" data-i18n="example_python_get">Python - GET request</option>
+                            <option value="python-post" data-i18n="example_python_post">Python - POST with JSON</option>
+                            <option value="javascript-fetch" data-i18n="example_js_fetch">JavaScript - Fetch API</option>
+                            <option value="javascript-axios" data-i18n="example_js_axios">JavaScript - Axios</option>
+                            <option value="php-curl" data-i18n="example_php_curl">PHP - cURL</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-section">
+                        <h4 data-i18n="code_input_title">Enter code</h4>
+                        <textarea id="codeInput" data-i18n-placeholder="code_input_placeholder" placeholder="Paste your code here..." aria-label="Enter code"></textarea>
+                        <div class="buttons">
+                            <button id="convertCodeBtn" data-i18n="btn_convert" aria-label="Convert code to curl">Convert</button>
+                            <button id="clearCodeBtn" data-i18n="btn_clear" aria-label="Clear code input">Clear</button>
+                        </div>
+                    </div>
+
+                    <div class="output-section">
+                        <h4 data-i18n="curl_output_title">Curl Command</h4>
+                        <div class="output-controls">
+                            <button id="copyCurlBtn" data-i18n="btn_copy" aria-label="Copy curl command">Copy</button>
+                        </div>
+                        <pre><code id="curlOutput" class="bash" data-i18n="curl_output_placeholder">// Curl command will be displayed here</code></pre>
+                    </div>
                 </div>
             </section>
 
+            <!-- 示例部分 -->
+            <section id="examples-section" class="examples-section">
+                <h2 data-i18n="examples_title">Examples</h2>
+                <p data-i18n="examples_description">Here are some common examples of using our conversion tools:</p>
+                
+                <div class="examples-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="curl-examples">Curl to JSON</button>
+                        <button class="tab-btn" data-tab="code-examples">Code to Curl</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <!-- Curl to JSON 示例 -->
+                        <div class="tab-pane active" id="curl-examples">
+                            <div class="example-card">
+                                <h3>GET Request</h3>
+                                <pre><code class="bash">curl -X GET https://api.example.com/users</code></pre>
+                                <h4>Converts to:</h4>
+                                <pre><code class="json">{
+    "method": "GET",
+    "url": "https://api.example.com/users",
+    "headers": {}
+}</code></pre>
+                            </div>
+                            
+                            <div class="example-card">
+                                <h3>POST with JSON</h3>
+                                <pre><code class="bash">curl -X POST https://api.example.com/users \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"John","email":"john@example.com"}'</code></pre>
+                                <h4>Converts to:</h4>
+                                <pre><code class="json">{
+    "method": "POST",
+    "url": "https://api.example.com/users",
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "data": {
+        "name": "John",
+        "email": "john@example.com"
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- Code to Curl 示例 -->
+                        <div class="tab-pane" id="code-examples">
+                            <div class="example-card">
+                                <h3>Python (requests)</h3>
+                                <pre><code class="python">import requests
+
+url = "https://api.example.com/users"
+headers = {"Content-Type": "application/json"}
+data = {"name": "John", "email": "john@example.com"}
+
+response = requests.post(url, headers=headers, json=data)</code></pre>
+                                <h4>Converts to:</h4>
+                                <pre><code class="bash">curl -X POST 'https://api.example.com/users' -H 'Content-Type: application/json' -d '{"name":"John","email":"john@example.com"}'</code></pre>
+                            </div>
+                            
+                            <div class="example-card">
+                                <h3>JavaScript (fetch)</h3>
+                                <pre><code class="javascript">fetch('https://api.example.com/users', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        name: 'John',
+        email: 'john@example.com'
+    })
+})</code></pre>
+                                <h4>Converts to:</h4>
+                                <pre><code class="bash">curl -X POST 'https://api.example.com/users' -H 'Content-Type: application/json' -d '{"name":"John","email":"john@example.com"}'</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
             <section id="api-section" class="api-section">
                 <h2 data-i18n="api_title">API Documentation</h2>
-                <p data-i18n="api_description">This tool provides a simple and easy-to-use API interface that can be integrated into your application for automated curl command parsing and conversion.</p>
+                <p data-i18n="api_description">This tool provides simple and easy-to-use API interfaces that can be integrated into your application for automated conversions.</p>
                 
                 <article class="api-info">
-                    <h3 id="api-endpoint" data-i18n="api_endpoint_title">Endpoint</h3>
-                    <p data-i18n="api_endpoint_desc">Use the following HTTP request method and path to access the API:</p>
-                    <code>POST /api/convert</code>
+                    <h3 id="api-endpoint" data-i18n="api_endpoint_title">Endpoints</h3>
+                    <p data-i18n="api_endpoint_desc">Use the following HTTP request methods and paths to access the APIs:</p>
+                    
+                    <div class="endpoint-card">
+                        <h4>Curl to JSON</h4>
+                        <code>POST /api/convert</code>
+                    </div>
+                    
+                    <div class="endpoint-card">
+                        <h4>Code to Curl</h4>
+                        <code>POST /api/reverse</code>
+                    </div>
                     
                     <h3 id="request-format" data-i18n="request_format_title">Request Format</h3>
-                    <p data-i18n="request_format_desc">The request body should be in JSON format, containing a <code>curl</code> field with the curl command string to be parsed:</p>
-                    <pre><code class="json">{
+                    
+                    <div class="format-tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" data-tab="curl-request">Curl to JSON</button>
+                            <button class="tab-btn" data-tab="code-request">Code to Curl</button>
+                        </div>
+                        
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="curl-request">
+                                <p data-i18n="request_format_desc">The request body should be in JSON format, containing a <code>curl</code> field with the curl command string to be parsed:</p>
+                                <pre><code class="json">{
     "curl": "your curl command here"
 }</code></pre>
+                            </div>
+                            
+                            <div class="tab-pane" id="code-request">
+                                <p data-i18n="code_request_format_desc">The request body should be in JSON format, containing <code>code</code> and <code>language</code> fields:</p>
+                                <pre><code class="json">{
+    "code": "your code here",
+    "language": "python" // or "javascript", "php"
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
                     
                     <h3 id="response-format" data-i18n="response_format_title">Response Format</h3>
-                    <p data-i18n="response_format_desc">The response content is a structured JSON object containing the following fields:</p>
-                    <ul>
-                        <li><strong>method</strong>: <span data-i18n="response_method">HTTP request method</span></li>
-                        <li><strong>url</strong>: <span data-i18n="response_url">Request URL</span></li>
-                        <li><strong>headers</strong>: <span data-i18n="response_headers">Request headers</span></li>
-                        <li><strong>data</strong>: <span data-i18n="response_data">Request data</span></li>
-                    </ul>
-                    <pre><code class="json">{
+                    
+                    <div class="format-tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" data-tab="curl-response">Curl to JSON</button>
+                            <button class="tab-btn" data-tab="code-response">Code to Curl</button>
+                        </div>
+                        
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="curl-response">
+                                <p data-i18n="response_format_desc">The response content is a structured JSON object containing the following fields:</p>
+                                <ul>
+                                    <li><strong>method</strong>: <span data-i18n="response_method">HTTP request method</span></li>
+                                    <li><strong>url</strong>: <span data-i18n="response_url">Request URL</span></li>
+                                    <li><strong>headers</strong>: <span data-i18n="response_headers">Request headers</span></li>
+                                    <li><strong>data</strong>: <span data-i18n="response_data">Request data</span></li>
+                                </ul>
+                                <pre><code class="json">{
     "method": "POST",
     "url": "https://curl-to.com",
     "headers": {
@@ -159,6 +380,23 @@
         "key": "value"
     }
 }</code></pre>
+                            </div>
+                            
+                            <div class="tab-pane" id="code-response">
+                                <p data-i18n="code_response_format_desc">The response content is a JSON object containing the following fields:</p>
+                                <ul>
+                                    <li><strong>command</strong>: <span data-i18n="response_command">The generated curl command</span></li>
+                                    <li><strong>success</strong>: <span data-i18n="response_success">Boolean indicating if conversion was successful</span></li>
+                                    <li><strong>message</strong>: <span data-i18n="response_message">Error message if conversion failed</span></li>
+                                </ul>
+                                <pre><code class="json">{
+    "command": "curl -X POST 'https://api.example.com' -H 'Content-Type: application/json' -d '{\"key\":\"value\"}'",,
+    "success": true,
+    "message": ""
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
 
                     <h3 id="examples-section" data-i18n="examples_title">Example Code</h3>
                     <p data-i18n="examples_description">Here are examples of calling this tool's API in different programming languages:</p>

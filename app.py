@@ -3,6 +3,8 @@ from flask_cors import CORS
 import shlex
 import json
 import re
+from code_to_curl import code_to_curl
+from curl_to_code_main import convert_curl_to_code, SUPPORTED_LANGUAGES
 
 app = Flask(__name__)
 CORS(app)  # 启用跨域支持
@@ -175,6 +177,78 @@ def convert_web():
         return jsonify({"error": "请提供curl命令"}), 400
     
     result = parse_curl(curl_command)
+    return jsonify(result)
+
+@app.route('/api/reverse', methods=['POST'])
+def reverse_convert():
+    """API端点：将代码转换为curl命令"""
+    print("收到反向转换API请求，内容类型:", request.content_type)
+    print("请求数据:", request.data)
+    
+    try:
+        data = request.get_json(force=True)
+        print("解析后的JSON数据:", data)
+        
+        if not data or 'code' not in data or 'language' not in data:
+            print("错误: 缺少code或language参数")
+            return jsonify({"error": "请提供代码和语言"}), 400
+        
+        code = data['code']
+        language = data['language']
+        print(f"代码语言: {language}")
+        
+        result = code_to_curl(code, language)
+        print("解析结果:", result)
+        
+        return jsonify(result)
+    except Exception as e:
+        print("处理请求时出错:", str(e))
+        return jsonify({"error": f"处理请求时出错: {str(e)}"}), 500
+
+@app.route('/api/languages', methods=['GET'])
+def get_supported_languages():
+    """API端点：获取支持的编程语言列表"""
+    return jsonify({"languages": SUPPORTED_LANGUAGES})
+
+@app.route('/api/curl-to-code', methods=['POST'])
+def curl_to_code():
+    """API端点：将curl命令转换为指定编程语言的代码"""
+    print("收到curl转代码API请求，内容类型:", request.content_type)
+    print("请求数据:", request.data)
+    
+    try:
+        data = request.get_json(force=True)
+        print("解析后的JSON数据:", data)
+        
+        if not data or 'curl' not in data or 'language' not in data:
+            print("错误: 缺少curl或language参数")
+            return jsonify({"error": "请提供curl命令和目标语言"}), 400
+        
+        curl_command = data['curl']
+        language = data['language'].lower()
+        print(f"目标语言: {language}")
+        
+        if language not in SUPPORTED_LANGUAGES:
+            return jsonify({"error": f"不支持的语言: {language}", "supported": SUPPORTED_LANGUAGES}), 400
+        
+        code = convert_curl_to_code(curl_command, language)
+        print("转换结果长度:", len(code))
+        
+        return jsonify({"code": code, "language": language})
+    except Exception as e:
+        print("处理请求时出错:", str(e))
+        return jsonify({"error": f"处理请求时出错: {str(e)}"}), 500
+
+@app.route('/reverse', methods=['POST'])
+def reverse_convert_web():
+    """Web表单提交处理：将代码转换为curl命令"""
+    code = request.form.get('code', '')
+    language = request.form.get('language', '')
+    
+    if not code or not language:
+        return jsonify({"error": "请提供代码和语言"}), 400
+    
+    result = code_to_curl(code, language)
     return jsonify(result)
 
 if __name__ == '__main__':
