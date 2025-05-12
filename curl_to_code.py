@@ -5,17 +5,18 @@ curl命令转换为多种编程语言代码的模块
 
 import json
 import re
-import shlex
+import curler
 
 # 支持的语言列表
 SUPPORTED_LANGUAGES = [
-    'python', 'javascript', 'nodejs', 'php', 'go', 
+    'python', 'javascript', 'nodejs', 'php', 'go',
     'ruby', 'java', 'csharp', 'rust', 'swift'
 ]
 
 def parse_curl_to_dict(curl_command):
     """
     将curl命令解析为统一的字典格式，便于后续转换
+    使用curler库来解析curl命令
     """
     # 初始化结果字典
     result = {
@@ -32,195 +33,63 @@ def parse_curl_to_dict(curl_command):
         "proxy": None
     }
     
-    # 使用shlex分割命令，保留引号内的内容
-    try:
-        args = shlex.split(curl_command)
-    except ValueError as e:
-        return {"error": f"命令解析错误: {str(e)}"}
-    
-    if args[0].lower() != 'curl':
-        return {"error": "不是有效的curl命令"}
-    
-    i = 1
-    while i < len(args):
-        arg = args[i]
+    # 验证输入
+    if not curl_command or not curl_command.strip():
+        return {"error": "请提供curl命令"}
         
-        # 处理URL（没有前缀的参数被视为URL）
-        if not arg.startswith('-'):
-            result["url"] = arg
-            i += 1
-            continue
-            
-        # 处理请求方法
-        if arg in ['-X', '--request']:
-            if i + 1 < len(args):
-                result["method"] = args[i + 1]
-                i += 2
-            else:
-                return {"error": f"参数 {arg} 缺少值"}
-            continue
-            
-        # 处理请求头
-        if arg in ['-H', '--header']:
-            if i + 1 < len(args):
-                header = args[i + 1]
-                # 处理cookie头
-                if header.lower().startswith('cookie:'):
-                    cookie_str = header[7:].strip()
-                    cookies = {}
-                    for cookie in cookie_str.split(';'):
-                        if '=' in cookie:
-                            key, value = cookie.split('=', 1)
-                            cookies[key.strip()] = value.strip()
-                    result["cookies"].update(cookies)
-                # 处理认证头
-                elif header.lower().startswith('authorization:'):
-                    auth_str = header[14:].strip()
-                    if auth_str.lower().startswith('basic '):
-                        result["auth"] = {"type": "basic", "token": auth_str[6:]}
-                    elif auth_str.lower().startswith('bearer '):
-                        result["auth"] = {"type": "bearer", "token": auth_str[7:]}
-                    else:
-                        result["auth"] = {"type": "custom", "value": auth_str}
-                    result["headers"]["Authorization"] = auth_str
-                else:
-                    # 处理普通头
-                    if ':' in header:
-                        key, value = header.split(':', 1)
-                        result["headers"][key.strip()] = value.strip()
-                i += 2
-            else:
-                return {"error": f"参数 {arg} 缺少值"}
-            continue
-            
+    # 确保命令以curl开头
+    curl_command = curl_command.strip()
+    if not curl_command.lower().startswith('curl '):
+        if curl_command.lower() == 'curl':
+            return {"error": "curl命令缺少URL参数"}
+        else:
+            # 尝试添加curl前缀
+            if not re.match(r'^[\'\"]*curl\s', curl_command.lower()):
+                curl_command = 'curl ' + curl_command
+    
+    try:
+        # 使用curler库解析curl命令
+        parsed_curl = curler.parse_curl(curl_command)
+        
+        # 填充结果字典
+        result["method"] = parsed_curl.method
+        result["url"] = parsed_curl.url
+        result["headers"] = parsed_curl.headers
+        result["verify_ssl"] = not parsed_curl.insecure
+        
         # 处理数据
-        if arg in ['-d', '--data', '--data-ascii', '--data-binary', '--data-raw']:
-            if i + 1 < len(args):
-                data = args[i + 1]
-                # 尝试解析为JSON
-                try:
-                    result["data"] = json.loads(data)
-                except json.JSONDecodeError:
-                    # 如果不是JSON，保留原始字符串
-                    result["data"] = data
-                i += 2
-            else:
-                return {"error": f"参数 {arg} 缺少值"}
-            continue
-            
-        # 处理表单数据
-        if arg in ['-F', '--form']:
-            if i + 1 < len(args):
-                if result["form_data"] is None:
-                    result["form_data"] = {}
-                form_item = args[i + 1]
-                
-                # 处理文件上传
-                if '@' in form_item and '=' in form_item:
-                    key, value = form_item.split('=', 1)
-                    if value.startswith('@'):
-                        file_path = value[1:]
-                        result["form_data"][key] = {"type": "file", "path": file_path}
-                    else:
-                        result["form_data"][key] = {"type": "text", "value": value}
-                elif '=' in form_item:
-                    key, value = form_item.split('=', 1)
-                    result["form_data"][key] = {"type": "text", "value": value}
-                
-                i += 2
-            else:
-                return {"error": f"参数 {arg} 缺少值"}
-            continue
-            
-        # 处理URL编码数据
-        if arg in ['--data-urlencode']:
-            if i + 1 < len(args):
-                if result["data"] is None:
-                    result["data"] = {}
-                data = args[i + 1]
-                if '=' in data:
-                    key, value = data.split('=', 1)
-                    if isinstance(result["data"], dict):
-                        result["data"][key] = value
-                    else:
-                        # 如果之前的数据不是字典，转换为字典
-                        result["data"] = {key: value}
-                i += 2
-            else:
-                return {"error": f"参数 {arg} 缺少值"}
-            continue
-            
-        # 处理cookie
-        if arg in ['-b', '--cookie']:
-            if i + 1 < len(args):
-                cookie_str = args[i + 1]
-                for cookie in cookie_str.split(';'):
-                    if '=' in cookie:
-                        key, value = cookie.split('=', 1)
-                        result["cookies"][key.strip()] = value.strip()
-                i += 2
-            else:
-                return {"error": f"参数 {arg} 缺少值"}
-            continue
-            
-        # 处理用户认证
-        if arg in ['-u', '--user']:
-            if i + 1 < len(args):
-                auth_str = args[i + 1]
-                if ':' in auth_str:
-                    username, password = auth_str.split(':', 1)
-                    result["auth"] = {"type": "basic", "username": username, "password": password}
+        if parsed_curl.data:
+            # 尝试解析为JSON
+            try:
+                if isinstance(parsed_curl.data, str) and parsed_curl.data.strip().startswith('{'):
+                    result["data"] = json.loads(parsed_curl.data)
                 else:
-                    result["auth"] = {"type": "basic", "username": auth_str, "password": ""}
-                i += 2
-            else:
-                return {"error": f"参数 {arg} 缺少值"}
-            continue
+                    result["data"] = parsed_curl.data
+            except json.JSONDecodeError:
+                result["data"] = parsed_curl.data
+        elif parsed_curl.data_binary:
+            result["data"] = parsed_curl.data_binary
             
-        # 处理超时
-        if arg in ['--connect-timeout']:
-            if i + 1 < len(args):
-                try:
-                    result["timeout"] = float(args[i + 1])
-                except ValueError:
-                    pass
-                i += 2
-            else:
-                return {"error": f"参数 {arg} 缺少值"}
-            continue
-            
-        # 处理重定向
-        if arg in ['-L', '--location']:
-            result["allow_redirects"] = True
-            i += 1
-            continue
-            
-        # 处理SSL验证
-        if arg in ['-k', '--insecure']:
-            result["verify_ssl"] = False
-            i += 1
-            continue
+        # 处理cookies
+        if parsed_curl.cookies:
+            result["cookies"] = parsed_curl.cookies
             
         # 处理代理
-        if arg in ['-x', '--proxy']:
-            if i + 1 < len(args):
-                result["proxy"] = args[i + 1]
-                i += 2
-            else:
-                return {"error": f"参数 {arg} 缺少值"}
-            continue
+        if parsed_curl.proxy:
+            result["proxy"] = parsed_curl.proxy
             
-        # 跳过其他选项
-        if arg.startswith('-') and i + 1 < len(args) and not args[i + 1].startswith('-'):
-            i += 2
-        else:
-            i += 1
-    
-    # 如果没有找到cookies，删除空的cookies字典
-    if not result["cookies"]:
-        del result["cookies"]
-        
-    return result
+        # 处理认证信息
+        if parsed_curl.user:
+            username, password = parsed_curl.user
+            result["auth"] = {
+                "type": "basic",
+                "username": username,
+                "password": password
+            }
+            
+        return result
+    except Exception as e:
+        return {"error": f"解析curl命令出错: {str(e)}"}
 
 
 def to_python(curl_dict):

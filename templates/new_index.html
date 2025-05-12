@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curl转换工具 | 多功能HTTP请求转换器</title>
+    <meta name="description" content="强大的Curl转换工具，支持curl命令与JSON格式互转，以及生成多种编程语言代码。为开发者提供高效的API调试和HTTP请求处理解决方案。">
+    <meta name="keywords" content="curl转换,curl命令解析,API调试工具,HTTP请求分析,代码生成">
+    
+    <!-- 社交媒体标签 -->
+    <meta property="og:title" content="Curl转换工具 | 多功能HTTP请求转换器">
+    <meta property="og:description" content="强大的Curl转换工具，支持curl命令与JSON格式互转，以及生成多种编程语言代码。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://curl-to.com/">
+    <meta property="og:image" content="https://curl-to.com/static/images/curl-converter-og.png">
+    
+    <!-- favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/icons/icon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/icons/icon.ico') }}" type="image/x-icon">
+    
+    <!-- 引入字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 样式和脚本 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/new_style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/highlight.min.js" defer></script>
+    
+    <!-- 代码高亮支持的语言 -->
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/json.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/python.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/javascript.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/php.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/java.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/csharp.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/rust.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/swift.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/go.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/ruby.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/bash.min.js" defer></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <h1>Curl转换工具</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active" data-tab="converter">转换器</a></li>
+                    <li><a href="#" data-tab="examples">使用示例</a></li>
+                    <li><a href="#" data-tab="api-docs">API文档</a></li>
+                    <li><a href="#" data-tab="about">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 转换器部分 -->
+        <section id="converter" class="tab-content active">
+            <div class="container">
+                <div class="converter-header">
+                    <h2>HTTP请求转换器</h2>
+                    <p>在不同格式之间转换HTTP请求，支持curl命令、JSON和多种编程语言</p>
+                </div>
+                
+                <div class="converter-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-converter="curl-to-anything">Curl转换</button>
+                        <button class="tab-btn" data-converter="code-to-curl">代码转Curl</button>
+                    </div>
+                    
+                    <!-- Curl转换面板 -->
+                    <div id="curl-to-anything" class="converter-panel active">
+                        <div class="panel-header">
+                            <div class="output-format">
+                                <label for="outputFormat">输出格式:</label>
+                                <select id="outputFormat" class="select-styled">
+                                    <option value="json">JSON</option>
+                                    <option value="python">Python</option>
+                                    <option value="javascript">JavaScript</option>
+                                    <option value="nodejs">Node.js</option>
+                                    <option value="php">PHP</option>
+                                    <option value="java">Java</option>
+                                    <option value="csharp">C#</option>
+                                    <option value="rust">Rust</option>
+                                    <option value="swift">Swift</option>
+                                    <option value="go">Go</option>
+                                    <option value="ruby">Ruby</option>
+                                </select>
+                            </div>
+                            
+                            <div class="examples-dropdown">
+                                <label for="curlExamples">示例:</label>
+                                <select id="curlExamples" class="select-styled">
+                                    <option value="">选择示例</option>
+                                    <option value="curl -X GET https://api.example.com/users">简单GET请求</option>
+                                    <option value="curl -X POST https://api.example.com/users -H 'Content-Type: application/json' -d '{\"name\":\"John\",\"email\":\"john@example.com\"}'">带JSON数据的POST请求</option>
+                                    <option value="curl -X PUT https://api.example.com/users/123 -H 'Authorization: Bearer token123' -H 'Content-Type: application/json' -d '{\"name\":\"Updated Name\"}'">带认证的PUT请求</option>
+                                    <option value="curl -X DELETE https://api.example.com/users/123 -H 'Authorization: Bearer token123'">DELETE请求</option>
+                                    <option value="curl -X POST https://api.example.com/upload -F 'file=@/path/to/file.jpg' -F 'description=Profile picture'">表单数据上传</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="converter-content">
+                            <div class="input-area">
+                                <div class="area-header">
+                                    <h3>输入Curl命令</h3>
+                                    <div class="area-actions">
+                                        <button id="clearBtn" class="btn-secondary">清除</button>
+                                    </div>
+                                </div>
+                                <textarea id="curlInput" placeholder="在此粘贴您的curl命令，例如: curl -X GET https://api.example.com"></textarea>
+                                <div class="area-footer">
+                                    <button id="convertBtn" class="btn-primary">转换</button>
+                                </div>
+                            </div>
+                            
+                            <div class="output-area">
+                                <div class="area-header">
+                                    <h3 id="outputTitle">输出结果</h3>
+                                    <div class="area-actions">
+                                        <button id="copyBtn" class="btn-secondary">复制</button>
+                                        <button id="formatBtn" class="btn-secondary">格式化</button>
+                                    </div>
+                                </div>
+                                <pre><code id="jsonOutput" class="json">// 转换结果将显示在这里</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 代码转Curl面板 -->
+                    <div id="code-to-curl" class="converter-panel">
+                        <div class="panel-header">
+                            <div class="language-selection">
+                                <label for="codeLanguage">代码语言:</label>
+                                <select id="codeLanguage" class="select-styled">
+                                    <option value="python">Python</option>
+                                    <option value="javascript">JavaScript</option>
+                                    <option value="php">PHP</option>
+                                </select>
+                            </div>
+                            
+                            <div class="examples-dropdown">
+                                <label for="codeExamples">示例:</label>
+                                <select id="codeExamples" class="select-styled">
+                                    <option value="">选择示例</option>
+                                    <option value="python-get">Python - GET请求</option>
+                                    <option value="python-post">Python - POST请求</option>
+                                    <option value="javascript-fetch">JavaScript - Fetch API</option>
+                                    <option value="javascript-axios">JavaScript - Axios</option>
+                                    <option value="php-curl">PHP - cURL</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="converter-content">
+                            <div class="input-area">
+                                <div class="area-header">
+                                    <h3>输入代码</h3>
+                                    <div class="area-actions">
+                                        <button id="clearCodeBtn" class="btn-secondary">清除</button>
+                                    </div>
+                                </div>
+                                <textarea id="codeInput" placeholder="在此粘贴您的代码"></textarea>
+                                <div class="area-footer">
+                                    <button id="convertCodeBtn" class="btn-primary">转换</button>
+                                </div>
+                            </div>
+                            
+                            <div class="output-area">
+                                <div class="area-header">
+                                    <h3>Curl命令</h3>
+                                    <div class="area-actions">
+                                        <button id="copyCurlBtn" class="btn-secondary">复制</button>
+                                    </div>
+                                </div>
+                                <pre><code id="curlOutput" class="bash">// Curl命令将显示在这里</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 示例部分 -->
+        <section id="examples" class="tab-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2>使用示例</h2>
+                    <p>了解如何使用Curl转换工具进行各种HTTP请求转换</p>
+                </div>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <h3>基本GET请求</h3>
+                        <div class="example-content">
+                            <div class="example-input">
+                                <h4>Curl命令</h4>
+                                <pre><code class="bash">curl -X GET https://api.example.com/users</code></pre>
+                            </div>
+                            <div class="example-output">
+                                <h4>JSON结果</h4>
+                                <pre><code class="json">{
+  "method": "GET",
+  "url": "https://api.example.com/users",
+  "headers": {}
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h3>带JSON数据的POST请求</h3>
+                        <div class="example-content">
+                            <div class="example-input">
+                                <h4>Curl命令</h4>
+                                <pre><code class="bash">curl -X POST https://api.example.com/users \
+  -H "Content-Type: application/json" \
+  -d '{"name":"John","email":"john@example.com"}'</code></pre>
+                            </div>
+                            <div class="example-output">
+                                <h4>Python代码</h4>
+                                <pre><code class="python">import requests
+
+headers = {
+    'Content-Type': 'application/json',
+}
+
+data = {
+    'name': 'John',
+    'email': 'john@example.com'
+}
+
+response = requests.post('https://api.example.com/users', headers=headers, json=data)
+print(response.json())</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h3>带认证的请求</h3>
+                        <div class="example-content">
+                            <div class="example-input">
+                                <h4>Curl命令</h4>
+                                <pre><code class="bash">curl -X GET https://api.example.com/users \
+  -H "Authorization: Bearer token123"</code></pre>
+                            </div>
+                            <div class="example-output">
+                                <h4>JavaScript代码</h4>
+                                <pre><code class="javascript">fetch('https://api.example.com/users', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer token123'
+  }
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- API文档部分 -->
+        <section id="api-docs" class="tab-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2>API文档</h2>
+                    <p>了解如何集成Curl转换工具的API到您的应用程序中</p>
+                </div>
+                
+                <div class="api-docs-content">
+                    <div class="api-section">
+                        <h3>API端点</h3>
+                        <div class="endpoint">
+                            <h4>Curl转JSON</h4>
+                            <div class="endpoint-details">
+                                <p><strong>URL:</strong> <code>/api/convert</code></p>
+                                <p><strong>方法:</strong> <code>POST</code></p>
+                                <p><strong>描述:</strong> 将curl命令转换为JSON格式</p>
+                            </div>
+                        </div>
+                        
+                        <div class="endpoint">
+                            <h4>Curl转代码</h4>
+                            <div class="endpoint-details">
+                                <p><strong>URL:</strong> <code>/api/curl-to-code</code></p>
+                                <p><strong>方法:</strong> <code>POST</code></p>
+                                <p><strong>描述:</strong> 将curl命令转换为指定编程语言的代码</p>
+                            </div>
+                        </div>
+                        
+                        <div class="endpoint">
+                            <h4>代码转Curl</h4>
+                            <div class="endpoint-details">
+                                <p><strong>URL:</strong> <code>/api/reverse</code></p>
+                                <p><strong>方法:</strong> <code>POST</code></p>
+                                <p><strong>描述:</strong> 将代码转换为curl命令</p>
+                            </div>
+                        </div>
+                        
+                        <div class="endpoint">
+                            <h4>获取支持的语言</h4>
+                            <div class="endpoint-details">
+                                <p><strong>URL:</strong> <code>/api/languages</code></p>
+                                <p><strong>方法:</strong> <code>GET</code></p>
+                                <p><strong>描述:</strong> 获取支持的编程语言列表</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="api-section">
+                        <h3>请求格式</h3>
+                        <div class="request-example">
+                            <h4>Curl转JSON</h4>
+                            <pre><code class="json">{
+  "curl": "curl -X GET https://api.example.com/users"
+}</code></pre>
+                        </div>
+                        
+                        <div class="request-example">
+                            <h4>Curl转代码</h4>
+                            <pre><code class="json">{
+  "curl": "curl -X GET https://api.example.com/users",
+  "language": "python"
+}</code></pre>
+                        </div>
+                        
+                        <div class="request-example">
+                            <h4>代码转Curl</h4>
+                            <pre><code class="json">{
+  "code": "import requests\n\nresponse = requests.get('https://api.example.com/users')\nprint(response.json())",
+  "language": "python"
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="api-section">
+                        <h3>响应格式</h3>
+                        <div class="response-example">
+                            <h4>Curl转JSON</h4>
+                            <pre><code class="json">{
+  "method": "GET",
+  "url": "https://api.example.com/users",
+  "headers": {}
+}</code></pre>
+                        </div>
+                        
+                        <div class="response-example">
+                            <h4>Curl转代码</h4>
+                            <pre><code class="json">{
+  "code": "import requests\n\nresponse = requests.get('https://api.example.com/users')\nprint(response.json())",
+  "language": "python"
+}</code></pre>
+                        </div>
+                        
+                        <div class="response-example">
+                            <h4>代码转Curl</h4>
+                            <pre><code class="json">{
+  "success": true,
+  "command": "curl -X GET https://api.example.com/users"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 关于部分 -->
+        <section id="about" class="tab-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2>关于Curl转换工具</h2>
+                    <p>了解我们的工具及其功能</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-section">
+                        <h3>项目介绍</h3>
+                        <p>Curl转换工具是一个强大的HTTP请求转换器，旨在简化开发人员的API调试和开发工作流程。它可以将curl命令转换为JSON格式或各种编程语言的代码，也可以将代码转换回curl命令。</p>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h3>主要功能</h3>
+                        <ul>
+                            <li>将curl命令转换为结构化JSON格式</li>
+                            <li>将curl命令转换为多种编程语言的代码</li>
+                            <li>将代码转换为等效的curl命令</li>
+                            <li>提供RESTful API接口，方便集成到其他应用</li>
+                            <li>支持多种HTTP方法、请求头、认证和数据格式</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h3>支持的编程语言</h3>
+                        <div class="languages-grid">
+                            <div class="language-item">Python</div>
+                            <div class="language-item">JavaScript</div>
+                            <div class="language-item">Node.js</div>
+                            <div class="language-item">PHP</div>
+                            <div class="language-item">Java</div>
+                            <div class="language-item">C#</div>
+                            <div class="language-item">Rust</div>
+                            <div class="language-item">Swift</div>
+                            <div class="language-item">Go</div>
+                            <div class="language-item">Ruby</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Curl转换工具 | <a href="#">隐私政策</a> | <a href="#">使用条款</a></p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/new_script.js') }}"></script>
+</body>
+</html>
