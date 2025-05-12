@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="examples-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 data-i18n="examples_title">使用示例</h2>
+            <p data-i18n="examples_description">以下是使用本工具API调用的各种编程语言示例代码</p>
+        </div>
+        
+        <div class="examples-grid">
+            <!-- 示例1：基本GET请求 -->
+            <div class="example-card">
+                <h3>基本GET请求</h3>
+                <div class="example-content">
+                    <div class="example-input">
+                        <h4>Curl命令</h4>
+                        <pre><code class="bash">curl -X GET https://api.example.com/users</code></pre>
+                    </div>
+                    <div class="example-output">
+                        <h4>生成的JSON</h4>
+                        <pre><code class="json">{
+  "method": "GET",
+  "url": "https://api.example.com/users",
+  "headers": {}
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 示例2：POST请求带JSON数据 -->
+            <div class="example-card">
+                <h3>POST请求带JSON数据</h3>
+                <div class="example-content">
+                    <div class="example-input">
+                        <h4>Curl命令</h4>
+                        <pre><code class="bash">curl -X POST https://api.example.com/users \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"John","email":"john@example.com"}'</code></pre>
+                    </div>
+                    <div class="example-output">
+                        <h4>生成的JSON</h4>
+                        <pre><code class="json">{
+  "method": "POST",
+  "url": "https://api.example.com/users",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "data": {
+    "name": "John",
+    "email": "john@example.com"
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 示例3：带认证的PUT请求 -->
+            <div class="example-card">
+                <h3>带认证的PUT请求</h3>
+                <div class="example-content">
+                    <div class="example-input">
+                        <h4>Curl命令</h4>
+                        <pre><code class="bash">curl -X PUT https://api.example.com/users/123 \
+  -H 'Authorization: Bearer token123' \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"Updated Name"}'</code></pre>
+                    </div>
+                    <div class="example-output">
+                        <h4>生成的JSON</h4>
+                        <pre><code class="json">{
+  "method": "PUT",
+  "url": "https://api.example.com/users/123",
+  "headers": {
+    "Authorization": "Bearer token123",
+    "Content-Type": "application/json"
+  },
+  "data": {
+    "name": "Updated Name"
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 示例4：文件上传 -->
+            <div class="example-card">
+                <h3>文件上传</h3>
+                <div class="example-content">
+                    <div class="example-input">
+                        <h4>Curl命令</h4>
+                        <pre><code class="bash">curl -X POST https://api.example.com/upload \
+  -F 'file=@/path/to/file.jpg' \
+  -F 'description=Profile picture'</code></pre>
+                    </div>
+                    <div class="example-output">
+                        <h4>生成的JSON</h4>
+                        <pre><code class="json">{
+  "method": "POST",
+  "url": "https://api.example.com/upload",
+  "form_data": {
+    "file": {
+      "type": "file",
+      "path": "/path/to/file.jpg"
+    },
+    "description": {
+      "type": "text",
+      "value": "Profile picture"
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 示例5：复杂请求 -->
+            <div class="example-card">
+                <h3>复杂请求与代理</h3>
+                <div class="example-content">
+                    <div class="example-input">
+                        <h4>Curl命令</h4>
+                        <pre><code class="bash">curl -X POST https://api.example.com/data \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Basic dXNlcjpwYXNz' \
+  -H 'Accept: application/json' \
+  -d '{"query":"test"}' \
+  -x http://proxy.example.com:8080 \
+  -k</code></pre>
+                    </div>
+                    <div class="example-output">
+                        <h4>生成的JSON</h4>
+                        <pre><code class="json">{
+  "method": "POST",
+  "url": "https://api.example.com/data",
+  "headers": {
+    "Content-Type": "application/json",
+    "Authorization": "Basic dXNlcjpwYXNz",
+    "Accept": "application/json"
+  },
+  "data": {
+    "query": "test"
+  },
+  "proxy": "http://proxy.example.com:8080",
+  "verify_ssl": false
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 示例6：代码转Curl -->
+            <div class="example-card">
+                <h3>从Python代码生成Curl</h3>
+                <div class="example-content">
+                    <div class="example-input">
+                        <h4>Python代码</h4>
+                        <pre><code class="python">import requests
+
+headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer token123'
+}
+
+data = {
+    'name': 'John Doe',
+    'email': 'john@example.com'
+}
+
+response = requests.post('https://api.example.com/users', 
+                        headers=headers, json=data)
+</code></pre>
+                    </div>
+                    <div class="example-output">
+                        <h4>生成的Curl命令</h4>
+                        <pre><code class="bash">curl -X POST \
+  'https://api.example.com/users' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer token123' \
+  -d '{"name":"John Doe","email":"john@example.com"}'</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 初始化代码高亮
+        document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+        });
+    });
+</script>
+{% endblock %}

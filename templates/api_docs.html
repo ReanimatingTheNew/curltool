@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="api-docs-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 data-i18n="api_title">API文档</h2>
+            <p data-i18n="api_description">本工具提供了简单易用的API接口，可以集成到您的应用程序中用于自动解析和转换curl命令。</p>
+        </div>
+        
+        <div class="api-docs-content">
+            <div class="api-section">
+                <h3 data-i18n="api_endpoint_title">API端点</h3>
+                <div class="endpoint">
+                    <h4>POST /api/convert</h4>
+                    <div class="endpoint-details">
+                        <p data-i18n="api_endpoint_desc">使用以下HTTP请求方法和路径访问API：</p>
+                        <pre><code class="bash">POST https://curl-to.com/api/convert</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="api-section">
+                <h3 data-i18n="request_format_title">请求格式</h3>
+                <p data-i18n="request_format_desc">请求体应该为JSON格式，包含一个`curl`字段，其中包含要解析的curl命令字符串：</p>
+                <div class="request-example">
+                    <h4>请求示例</h4>
+                    <pre><code class="json">{
+  "curl": "curl -X POST https://api.example.com/users -H 'Content-Type: application/json' -d '{\"name\":\"John\",\"email\":\"john@example.com\"}'"
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="api-section">
+                <h3 data-i18n="response_format_title">响应格式</h3>
+                <p data-i18n="response_format_desc">响应内容是一个结构化的JSON对象，包含以下字段：</p>
+                <ul>
+                    <li><strong>method</strong> <span data-i18n="response_method">- HTTP请求方法</span></li>
+                    <li><strong>url</strong> <span data-i18n="response_url">- 请求URL</span></li>
+                    <li><strong>headers</strong> <span data-i18n="response_headers">- 请求头</span></li>
+                    <li><strong>data</strong> <span data-i18n="response_data">- 请求数据</span></li>
+                </ul>
+                <div class="response-example">
+                    <h4>响应示例</h4>
+                    <pre><code class="json">{
+  "method": "POST",
+  "url": "https://api.example.com/users",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "data": {
+    "name": "John",
+    "email": "john@example.com"
+  }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="api-section">
+                <h3 data-i18n="examples_title">调用示例</h3>
+                
+                <div class="code-example">
+                    <h4>Python</h4>
+                    <pre><code class="python">import requests
+import json
+
+url = "https://curl-to.com/api/convert"
+payload = {
+    "curl": "curl -X POST https://api.example.com/users -H 'Content-Type: application/json' -d '{\"name\":\"John\",\"email\":\"john@example.com\"}'"
+}
+
+response = requests.post(url, json=payload)
+result = response.json()
+print(json.dumps(result, indent=2))</code></pre>
+                </div>
+                
+                <div class="code-example">
+                    <h4>JavaScript</h4>
+                    <pre><code class="javascript">const url = 'https://curl-to.com/api/convert';
+const payload = {
+  curl: `curl -X POST https://api.example.com/users -H 'Content-Type: application/json' -d '{"name":"John","email":"john@example.com"}'`
+};
+
+fetch(url, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(payload),
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));</code></pre>
+                </div>
+                
+                <div class="code-example">
+                    <h4>PHP</h4>
+                    <pre><code class="php">&lt;?php
+$url = 'https://curl-to.com/api/convert';
+$payload = [
+    'curl' => 'curl -X POST https://api.example.com/users -H \'Content-Type: application/json\' -d \'{"name":"John","email":"john@example.com"}\''
+];
+
+$options = [
+    'http' => [
+        'method'  => 'POST',
+        'header'  => 'Content-Type: application/json',
+        'content' => json_encode($payload)
+    ]
+];
+
+$context  = stream_context_create($options);
+$result = file_get_contents($url, false, $context);
+$response = json_decode($result, true);
+
+print_r($response);
+?&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="api-section">
+                <h3>使用限制</h3>
+                <ul>
+                    <li>免费API每小时限制100次请求</li>
+                    <li>每个请求最大大小为16KB</li>
+                    <li>支持的curl参数见文档</li>
+                </ul>
+                <p>如需更高的请求限制或自定义功能，请联系我们获取API密钥。</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 初始化代码高亮
+        document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="about-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 data-i18n="about_title">关于我们</h2>
+            <p data-i18n="about_description">Curl转换工具是一个专为开发者设计的在线工具，旨在简化API调试和HTTP请求分析。通过将复杂的curl命令转换为结构化JSON格式或各种编程语言代码，帮助开发者更轻松地理解和处理HTTP请求。</p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-section">
+                <h3 data-i18n="features_title">主要功能</h3>
+                <ul>
+                    <li data-i18n="feature_1">快速转换 - 瞬间将curl命令转换为JSON格式或编程代码</li>
+                    <li data-i18n="feature_2">全面解析 - 支持各种curl参数，如请求方法、头部、数据等</li>
+                    <li data-i18n="feature_3">API接口 - 提供简单易用的API，可集成到其他系统中</li>
+                    <li data-i18n="feature_4">用户友好 - 直观的界面设计和交互体验</li>
+                    <li>双向转换 - 支持curl与代码之间的相互转换</li>
+                    <li>多语言支持 - 提供多种本地化语言选择</li>
+                </ul>
+            </div>
+            
+            <div class="about-section">
+                <h3 data-i18n="use_cases_title">应用场景</h3>
+                <ul>
+                    <li data-i18n="use_case_1">API开发与测试</li>
+                    <li data-i18n="use_case_2">网络请求调试</li>
+                    <li data-i18n="use_case_3">自动化脚本编写</li>
+                    <li data-i18n="use_case_4">学习HTTP协议</li>
+                    <li>API文档生成</li>
+                    <li>代码迁移和转换</li>
+                </ul>
+            </div>
+            
+            <div class="about-section">
+                <h3>支持的编程语言</h3>
+                <p>我们的工具可以将curl命令转换为以下编程语言的代码：</p>
+                <div class="languages-grid">
+                    <div class="language-item">Python</div>
+                    <div class="language-item">JavaScript</div>
+                    <div class="language-item">Node.js</div>
+                    <div class="language-item">PHP</div>
+                    <div class="language-item">Java</div>
+                    <div class="language-item">C#</div>
+                    <div class="language-item">Go</div>
+                    <div class="language-item">Ruby</div>
+                    <div class="language-item">Rust</div>
+                    <div class="language-item">Swift</div>
+                </div>
+            </div>
+            
+            <div class="about-section">
+                <h3>技术实现</h3>
+                <p>本工具使用现代Web技术栈开发：</p>
+                <ul>
+                    <li><strong>后端</strong>：基于Flask框架的Python应用，提供高效的curl命令解析和代码生成</li>
+                    <li><strong>前端</strong>：使用现代HTML5、CSS3和JavaScript开发的响应式界面</li>
+                    <li><strong>解析引擎</strong>：采用专业的curler库进行curl命令解析，确保高准确性</li>
+                    <li><strong>国际化</strong>：支持多语言本地化，提供全球用户友好的体验</li>
+                    <li><strong>API</strong>：提供RESTful API接口，便于与其他系统集成</li>
+                </ul>
+            </div>
+            
+            <div class="about-section">
+                <h3>关于作者</h3>
+                <p>Curl转换工具由一群热爱Web开发和API技术的工程师创建。我们致力于为开发者提供高效实用的工具，简化日常开发和调试工作。</p>
+                <p>如果您有任何反馈或建议，请通过以下方式联系我们：</p>
+                <ul>
+                    <li>Email: contact@curl-to.com</li>
+                    <li>GitHub: <a href="https://github.com/curl-to/converter" target="_blank">github.com/curl-to/converter</a></li>
+                    <li>Twitter: <a href="https://twitter.com/curltojson" target="_blank">@curltojson</a></li>
+                </ul>
+            </div>
+            
+            <div class="about-section">
+                <h3>版权和许可</h3>
+                <p>© 2025 Curl转换工具。本工具基于MIT许可证开源。</p>
+                <p>我们感谢所有开源项目的贡献者，本工具使用了以下开源库：</p>
+                <ul>
+                    <li>Flask - Python Web框架</li>
+                    <li>curler - Curl命令解析库</li>
+                    <li>highlight.js - 代码高亮库</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

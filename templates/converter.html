@@ -53,10 +53,12 @@
                             <h3 data-i18n="input_title">输入Curl命令</h3>
                             <div class="area-actions">
                                 <button id="clearBtn" class="btn-secondary" data-i18n="btn_clear">清除</button>
-                                <button id="convertBtn" class="btn-primary" data-i18n="btn_convert">转换</button>
                             </div>
                         </div>
                         <textarea id="curlInput" data-i18n-placeholder="input_placeholder" placeholder="在此粘贴您的curl命令，例如: curl -X GET https://api.example.com"></textarea>
+                        <div class="area-footer">
+                            <button id="convertBtn" class="btn-primary" data-i18n="btn_convert">转换</button>
+                        </div>
                     </div>
                     
                     <div class="output-area">
@@ -103,10 +105,12 @@
                             <h3 data-i18n="code_input_title">输入代码</h3>
                             <div class="area-actions">
                                 <button id="clearCodeBtn" class="btn-secondary" data-i18n="btn_clear">清除</button>
-                                <button id="convertCodeBtn" class="btn-primary" data-i18n="btn_convert">转换</button>
                             </div>
                         </div>
                         <textarea id="codeInput" data-i18n-placeholder="code_input_placeholder" placeholder="在此粘贴您的代码"></textarea>
+                        <div class="area-footer">
+                            <button id="convertCodeBtn" class="btn-primary" data-i18n="btn_convert">转换</button>
+                        </div>
                     </div>
                     
                     <div class="output-area">
@@ -126,24 +130,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/new_script.js') }}"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // 初始化代码高亮
-        document.querySelectorAll('pre code').forEach((block) => {
-            hljs.highlightElement(block);
-        });
-        
-        // 如果用户直接访问根路径，检查其首选语言并重定向
-        if (window.location.pathname === '/') {
-            const userLang = localStorage.getItem('preferred_language') || navigator.language.split('-')[0];
-            const supportedLocales = ['en', 'zh', 'hi', 'fr', 'de', 'es'];
-            const locale = supportedLocales.includes(userLang) ? userLang : 'en';
-            
-            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-                window.location.href = '/' + locale;
-            }
-        }
-    });
-</script>
+<script src="{{ url_for('static', filename='js/new_script.js') }}" defer></script>
 {% endblock %}

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 from flask_cors import CORS
 import shlex
 import json
@@ -11,12 +11,47 @@ from new_parse_curl import parse_curl, parse_curl_original
 app = Flask(__name__)
 CORS(app)  # 启用跨域支持
 
+# 支持的语言列表
+SUPPORTED_LOCALES = ['en', 'zh', 'hi', 'fr', 'de', 'es']
+DEFAULT_LOCALE = 'en'
+
 # parse_curl函数已经从new_parse_curl.py导入
 
 @app.route('/')
 def index():
-    """渲染主页"""
-    return render_template('new_index.html')
+    """渲染主页，默认使用英语"""
+    return redirect(url_for('localized_converter', locale=DEFAULT_LOCALE))
+
+@app.route('/<locale>')
+def localized_converter(locale):
+    """根据语言渲染转换器页面"""
+    if locale not in SUPPORTED_LOCALES:
+        return redirect(url_for('localized_converter', locale=DEFAULT_LOCALE))
+    return render_template('new_index.html', locale=locale)
+
+@app.route('/about')
+def about():
+    """关于我们页面"""
+    locale = request.args.get('locale', DEFAULT_LOCALE)
+    if locale not in SUPPORTED_LOCALES:
+        locale = DEFAULT_LOCALE
+    return render_template('about.html', locale=locale)
+
+@app.route('/examples')
+def examples():
+    """示例页面"""
+    locale = request.args.get('locale', DEFAULT_LOCALE)
+    if locale not in SUPPORTED_LOCALES:
+        locale = DEFAULT_LOCALE
+    return render_template('examples.html', locale=locale)
+
+@app.route('/api-docs')
+def api_docs():
+    """API文档页面"""
+    locale = request.args.get('locale', DEFAULT_LOCALE)
+    if locale not in SUPPORTED_LOCALES:
+        locale = DEFAULT_LOCALE
+    return render_template('api_docs.html', locale=locale)
 
 @app.route('/old')
 def old_ui():
