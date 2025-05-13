@@ -4,8 +4,39 @@
 <section class="converter-section">
     <div class="container">
         <div class="converter-header">
-            <h2 data-i18n="tool_title">HTTP请求转换器</h2>
-            <p data-i18n="tool_description">在不同格式之间转换HTTP请求，支持curl命令、JSON和多种编程语言</p>
+            {% if target_language is defined %}
+                {% if target_language == "python" %}
+                    <h1>Convert CURL to Python | CURL to Python Converter</h1>
+                    <p>Transform CURL commands to Python code with our free online converter. Perfect for requests, API testing and integration.</p>
+                {% elif target_language == "javascript" %}
+                    <h1>Convert CURL to JavaScript | CURL to JS Converter</h1>
+                    <p>Transform CURL commands to JavaScript code with our free online converter. Perfect for fetch API, Axios and Node.js.</p>
+                {% elif target_language == "php" %}
+                    <h1>Convert CURL to PHP | CURL to PHP Converter</h1>
+                    <p>Transform CURL commands to PHP code with our free online converter. Perfect for API requests and backend integration.</p>
+                {% elif target_language == "java" %}
+                    <h1>Convert CURL to Java | CURL to Java Converter</h1>
+                    <p>Transform CURL commands to Java code with our free online converter. Perfect for HttpClient, OkHttp and API integration.</p>
+                {% elif target_language == "csharp" %}
+                    <h1>Convert CURL to C# | CURL to C# Converter</h1>
+                    <p>Transform CURL commands to C# code with our free online converter. Perfect for HttpClient, RestSharp and .NET integration.</p>
+                {% elif target_language == "ruby" %}
+                    <h1>Convert CURL to Ruby | CURL to Ruby Converter</h1>
+                    <p>Transform CURL commands to Ruby code with our free online converter. Perfect for API requests and backend integration.</p>
+                {% elif target_language == "go" %}
+                    <h1>Convert CURL to Go | CURL to Go Converter</h1>
+                    <p>Transform CURL commands to Go code with our free online converter. Perfect for API requests and backend integration.</p>
+                {% elif target_language == "swift" %}
+                    <h1>Convert CURL to Swift | CURL to Swift Converter</h1>
+                    <p>Transform CURL commands to Swift code with our free online converter. Perfect for iOS and macOS app development.</p>
+                {% elif target_language == "rust" %}
+                    <h1>Convert CURL to Rust | CURL to Rust Converter</h1>
+                    <p>Transform CURL commands to Rust code with our free online converter. Perfect for API integration and reliable HTTP clients.</p>
+                {% endif %}
+            {% else %}
+                <h1 data-i18n="tool_title">HTTP请求转换器</h1>
+                <p data-i18n="tool_description">在不同格式之间转换HTTP请求，支持curl命令、JSON和多种编程语言</p>
+            {% endif %}
         </div>
         
         <div class="converter-tabs">
@@ -20,14 +51,17 @@
                     <div class="output-format">
                         <label for="outputFormat" data-i18n="output_format_label">输出格式:</label>
                         <select id="outputFormat" class="select-styled">
-                            <option value="json" data-i18n="format_json">JSON</option>
-                            <option value="python" data-i18n="format_python">Python</option>
-                            <option value="javascript" data-i18n="format_javascript">JavaScript</option>
-                            <option value="nodejs" data-i18n="format_nodejs">Node.js</option>
-                            <option value="php" data-i18n="format_php">PHP</option>
-                            <option value="java" data-i18n="format_java">Java</option>
-                            <option value="csharp" data-i18n="format_csharp">C#</option>
-                            <option value="rust" data-i18n="format_rust">Rust</option>
+                            <option value="json" {% if target_language is not defined %}selected{% endif %} data-i18n="format_json">JSON</option>
+                            <option value="python" {% if target_language == "python" %}selected{% endif %} data-i18n="format_python">Python</option>
+                            <option value="javascript" {% if target_language == "javascript" %}selected{% endif %} data-i18n="format_javascript">JavaScript</option>
+                            <option value="nodejs" {% if target_language == "nodejs" %}selected{% endif %} data-i18n="format_nodejs">Node.js</option>
+                            <option value="php" {% if target_language == "php" %}selected{% endif %} data-i18n="format_php">PHP</option>
+                            <option value="java" {% if target_language == "java" %}selected{% endif %} data-i18n="format_java">Java</option>
+                            <option value="csharp" {% if target_language == "csharp" %}selected{% endif %} data-i18n="format_csharp">C#</option>
+                            <option value="rust" {% if target_language == "rust" %}selected{% endif %} data-i18n="format_rust">Rust</option>
+                            <option value="swift" {% if target_language == "swift" %}selected{% endif %} data-i18n="format_swift">Swift</option>
+                            <option value="go" {% if target_language == "go" %}selected{% endif %} data-i18n="format_go">Go</option>
+                            <option value="ruby" {% if target_language == "ruby" %}selected{% endif %} data-i18n="format_ruby">Ruby</option>
                             <option value="swift" data-i18n="format_swift">Swift</option>
                             <option value="go" data-i18n="format_go">Go</option>
                             <option value="ruby" data-i18n="format_ruby">Ruby</option>
@@ -120,6 +154,63 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- SEO优化：语言转换链接区域 -->
+            {% if not target_language %}
+            <div class="language-links-section">
+                <div class="container">
+                    <h2>转换CURL命令到各种编程语言</h2>
+                    <div class="language-links-grid">
+                        <div class="language-link-card">
+                            <h3><a href="/curl-to-python/">CURL to Python</a></h3>
+                            <p>将CURL命令转换为Python代码，支持requests库</p>
+                            <a href="/curl-to-python/" class="btn-link">转换为Python</a>
+                            <a href="/tutorials/curl-to-python/" class="tutorial-link">查看Python教程</a>
+                        </div>
+                        <div class="language-link-card">
+                            <h3><a href="/curl-to-javascript/">CURL to JavaScript</a></h3>
+                            <p>将CURL命令转换为JavaScript代码，支持fetch和XMLHttpRequest</p>
+                            <a href="/curl-to-javascript/" class="btn-link">转换为JavaScript</a>
+                        </div>
+                        <div class="language-link-card">
+                            <h3><a href="/curl-to-php/">CURL to PHP</a></h3>
+                            <p>将CURL命令转换为PHP代码，支持cURL扩展</p>
+                            <a href="/curl-to-php/" class="btn-link">转换为PHP</a>
+                        </div>
+                        <div class="language-link-card">
+                            <h3><a href="/curl-to-java/">CURL to Java</a></h3>
+                            <p>将CURL命令转换为Java代码，支持HttpClient</p>
+                            <a href="/curl-to-java/" class="btn-link">转换为Java</a>
+                        </div>
+                        <div class="language-link-card">
+                            <h3><a href="/curl-to-csharp/">CURL to C#</a></h3>
+                            <p>将CURL命令转换为C#代码，支持HttpClient</p>
+                            <a href="/curl-to-csharp/" class="btn-link">转换为C#</a>
+                        </div>
+                        <div class="language-link-card">
+                            <h3><a href="/curl-to-ruby/">CURL to Ruby</a></h3>
+                            <p>将CURL命令转换为Ruby代码</p>
+                            <a href="/curl-to-ruby/" class="btn-link">转换为Ruby</a>
+                        </div>
+                        <div class="language-link-card">
+                            <h3><a href="/curl-to-go/">CURL to Go</a></h3>
+                            <p>将CURL命令转换为Go代码</p>
+                            <a href="/curl-to-go/" class="btn-link">转换为Go</a>
+                        </div>
+                        <div class="language-link-card">
+                            <h3><a href="/curl-to-swift/">CURL to Swift</a></h3>
+                            <p>将CURL命令转换为Swift代码</p>
+                            <a href="/curl-to-swift/" class="btn-link">转换为Swift</a>
+                        </div>
+                        <div class="language-link-card">
+                            <h3><a href="/curl-to-rust/">CURL to Rust</a></h3>
+                            <p>将CURL命令转换为Rust代码</p>
+                            <a href="/curl-to-rust/" class="btn-link">转换为Rust</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 </section>

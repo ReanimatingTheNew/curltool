@@ -15,6 +15,15 @@
     <meta property="og:url" content="https://curl-to.com/{{ locale }}">
     <meta property="og:image" content="https://curl-to.com/static/images/curl-converter-og.png">
     
+    <!-- Canonical tag for SEO -->
+    <link rel="canonical" href="https://curl-to.com{{ request.path }}">
+    
+    <!-- hreflang tags for internationalization -->
+    {% for lang in ['en', 'zh', 'hi', 'fr', 'de', 'es'] %}
+    <link rel="alternate" hreflang="{{ lang }}" href="https://curl-to.com/{{ lang }}{{ request.path | replace('/' + locale, '') }}">
+    {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="https://curl-to.com/en{{ request.path | replace('/' + locale, '') }}">
+    
     <!-- favicon -->
     <link rel="icon" href="{{ url_for('static', filename='images/icons/icon.ico') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/icons/icon.ico') }}" type="image/x-icon">
@@ -41,6 +50,23 @@
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/go.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/ruby.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/bash.min.js" defer></script>
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "CURL Converter",
+        "description": "Convert CURL commands to multiple programming languages including Python, JavaScript, PHP, Java, Ruby, C# and more. Perfect for API testing and code generation.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
 </head>
 <body>
     <header class="main-header">

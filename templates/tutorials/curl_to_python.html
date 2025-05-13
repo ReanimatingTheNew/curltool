@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="tutorial-section">
+    <div class="container">
+        <div class="tutorial-header">
+            <h1>Convert CURL to Python | Complete Guide to CURL to Python Conversion</h1>
+            <p class="meta">Updated: May 13, 2025 | By CURL Converter Team</p>
+        </div>
+        
+        <nav class="table-of-contents">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#introduction">Introduction to CURL to Python Conversion</a></li>
+                <li><a href="#why-convert">Why Convert CURL to Python Code?</a></li>
+                <li><a href="#converter-tool">Using Our CURL to Python Converter</a></li>
+                <li><a href="#examples">Real-World Examples</a></li>
+                <li><a href="#libraries">Python HTTP Libraries Comparison</a></li>
+                <li><a href="#best-practices">Best Practices</a></li>
+            </ul>
+        </nav>
+        
+        <article class="tutorial-content">
+            <section id="introduction">
+                <h2>Introduction to CURL to Python Conversion</h2>
+                <p>Converting CURL commands to Python code allows developers to easily transform API testing commands into production-ready Python code. This guide explores the complete process of converting CURL commands to Python requests.</p>
+                <p>CURL (Client URL) is a command-line tool for making HTTP requests. While it's great for testing APIs and debugging, developers often need to implement these requests in their applications written in programming languages like Python.</p>
+            </section>
+            
+            <section id="why-convert">
+                <h2>Why Convert CURL to Python Code?</h2>
+                <ul>
+                    <li><strong>Reusability:</strong> Convert one-off CURL commands into reusable Python functions</li>
+                    <li><strong>Integration:</strong> Easily incorporate API calls into your Python applications</li>
+                    <li><strong>Authentication:</strong> Handle complex authentication methods systematically</li>
+                    <li><strong>Error handling:</strong> Add robust error handling around your HTTP requests</li>
+                    <li><strong>Testing:</strong> Create automated tests for your API interactions</li>
+                </ul>
+            </section>
+            
+            <section id="converter-tool">
+                <h2>Using Our CURL to Python Converter</h2>
+                <p>Our <a href="/curl-to-python/">CURL to Python converter</a> makes the conversion process simple:</p>
+                <ol>
+                    <li>Paste your CURL command in the input box</li>
+                    <li>Select "Python" as the output format</li>
+                    <li>Click "Convert" to generate Python code</li>
+                    <li>Copy the generated code to your project</li>
+                </ol>
+                <p>The converter automatically handles headers, query parameters, request body, authentication, and other CURL options.</p>
+                <div class="converter-cta">
+                    <a href="/curl-to-python/" class="btn-primary">Try the CURL to Python Converter</a>
+                </div>
+            </section>
+            
+            <section id="examples">
+                <h2>Real-World Examples</h2>
+                
+                <h3>Example 1: Basic GET Request</h3>
+                <div class="code-example">
+                    <h4>CURL Command:</h4>
+                    <pre><code>curl -X GET https://api.example.com/users</code></pre>
+                    
+                    <h4>Generated Python Code:</h4>
+                    <pre><code>import requests
+
+url = "https://api.example.com/users"
+
+payload = {}
+headers = {}
+
+response = requests.get(url, headers=headers, data=payload)
+
+print(response.status_code)
+print(response.text)</code></pre>
+                </div>
+                
+                <h3>Example 2: POST with JSON Body</h3>
+                <div class="code-example">
+                    <h4>CURL Command:</h4>
+                    <pre><code>curl -X POST \
+  https://api.example.com/users \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"John Doe","email":"john@example.com"}'</code></pre>
+                    
+                    <h4>Generated Python Code:</h4>
+                    <pre><code>import requests
+import json
+
+url = "https://api.example.com/users"
+
+payload = json.dumps({
+  "name": "John Doe",
+  "email": "john@example.com"
+})
+headers = {
+  'Content-Type': 'application/json'
+}
+
+response = requests.post(url, headers=headers, data=payload)
+
+print(response.status_code)
+print(response.text)</code></pre>
+                </div>
+                
+                <h3>Example 3: Authorization Header</h3>
+                <div class="code-example">
+                    <h4>CURL Command:</h4>
+                    <pre><code>curl -X GET \
+  https://api.example.com/profile \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'</code></pre>
+                    
+                    <h4>Generated Python Code:</h4>
+                    <pre><code>import requests
+
+url = "https://api.example.com/profile"
+
+payload = {}
+headers = {
+  'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+}
+
+response = requests.get(url, headers=headers, data=payload)
+
+print(response.status_code)
+print(response.text)</code></pre>
+                </div>
+            </section>
+            
+            <section id="libraries">
+                <h2>Python HTTP Libraries Comparison</h2>
+                <p>Python offers several libraries for making HTTP requests. Our converter generates code using the popular <code>requests</code> library, but you might consider alternatives depending on your needs:</p>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Library</th>
+                            <th>Pros</th>
+                            <th>Cons</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>requests</code></td>
+                            <td>Simple API, excellent documentation, widely used</td>
+                            <td>Not async by default</td>
+                            <td>General purpose HTTP requests, best for beginners</td>
+                        </tr>
+                        <tr>
+                            <td><code>aiohttp</code></td>
+                            <td>Async support, good performance</td>
+                            <td>More complex API</td>
+                            <td>High-performance async applications</td>
+                        </tr>
+                        <tr>
+                            <td><code>httpx</code></td>
+                            <td>Similar to requests but with async support</td>
+                            <td>Newer library, less widespread</td>
+                            <td>Projects that need both sync and async HTTP</td>
+                        </tr>
+                        <tr>
+                            <td><code>urllib3</code></td>
+                            <td>Low-level control, thread-safe</td>
+                            <td>More verbose API</td>
+                            <td>Advanced use cases requiring fine-grained control</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="best-practices">
+                <h2>Best Practices for Python HTTP Requests</h2>
+                <ol>
+                    <li><strong>Use sessions</strong> for multiple requests to the same host</li>
+                    <li><strong>Handle errors</strong> with try/except blocks</li>
+                    <li><strong>Set timeouts</strong> to prevent hanging requests</li>
+                    <li><strong>Verify SSL certificates</strong> in production environments</li>
+                    <li><strong>Use connection pooling</strong> for better performance</li>
+                    <li><strong>Implement retries</strong> for failed requests</li>
+                </ol>
+                
+                <h3>Improved Code Example with Best Practices:</h3>
+                <pre><code>import requests
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
+
+def create_session_with_retries(retries=3, backoff_factor=0.3):
+    session = requests.Session()
+    retry = Retry(
+        total=retries,
+        read=retries,
+        connect=retries,
+        backoff_factor=backoff_factor,
+        status_forcelist=[500, 502, 503, 504],
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount('http://', adapter)
+    session.mount('https://', adapter)
+    return session
+
+def fetch_users():
+    session = create_session_with_retries()
+    url = "https://api.example.com/users"
+    
+    try:
+        response = session.get(url, timeout=5)
+        response.raise_for_status()  # Raise exception for 4XX/5XX responses
+        return response.json()
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP error occurred: {e}")
+    except requests.exceptions.ConnectionError:
+        print("Connection error occurred")
+    except requests.exceptions.Timeout:
+        print("Request timed out")
+    except requests.exceptions.RequestException as e:
+        print(f"An error occurred: {e}")
+    except ValueError:
+        print("Response could not be parsed as JSON")
+    
+    return None</code></pre>
+            </section>
+        </article>
+        
+        <div class="related-tutorials">
+            <h2>Related Tutorials</h2>
+            <ul>
+                <li><a href="/tutorials/curl-authentication-examples/">CURL Authentication Examples</a></li>
+                <li><a href="/tutorials/api-testing-with-curl/">API Testing with CURL</a></li>
+                <li><a href="/tutorials/python-requests-tutorial/">Python Requests Library Tutorial</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add smooth scrolling for table of contents
+        document.querySelectorAll('.table-of-contents a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

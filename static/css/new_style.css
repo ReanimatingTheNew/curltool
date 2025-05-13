@@ -657,3 +657,86 @@ footer a:hover {
 .tab-content.active {
     animation: fadeIn 0.3s ease-out;
 }
+
+/* 语言链接区域样式 */
+.language-links-section {
+    margin-top: 40px;
+    padding: 40px 0;
+    background-color: #f8f9fa;
+    border-top: 1px solid var(--border-color);
+}
+
+.language-links-section h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--text-color);
+    font-size: 1.8rem;
+}
+
+.language-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.language-link-card {
+    background-color: #fff;
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.language-link-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.language-link-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.language-link-card h3 a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.language-link-card p {
+    margin-bottom: 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    min-height: 40px;
+}
+
+.language-link-card .btn-link {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.language-link-card .tutorial-link {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: transparent;
+    color: var(--primary-color);
+    text-decoration: none;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .language-links-grid {
+        grid-template-columns: 1fr;
+    }
+}
