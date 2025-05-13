@@ -81,11 +81,35 @@ const translations = {
         'footer_nav_title': 'Quick Navigation',
         'footer_copyright': '© 2025 Curl to JSON Tool | A simple and efficient API debugging tool',
         'footer_description': 'This tool is designed to help developers handle HTTP requests more efficiently, improving development and debugging productivity.',
+        'footer_about': 'About',
+        'footer_api': 'API Docs',
         
         // 语言切换
         'language_switch': 'Language',
         'lang_en': 'English',
-        'lang_zh': '中文'
+        'lang_zh': '中文',
+        
+        // 语言链接区域
+        'lang_links_title': 'Convert CURL Commands to Various Programming Languages',
+        'python_desc': 'Convert CURL commands to Python code, supporting the requests library',
+        'javascript_desc': 'Convert CURL commands to JavaScript code, supporting fetch and XMLHttpRequest',
+        'php_desc': 'Convert CURL commands to PHP code, supporting cURL extension',
+        'java_desc': 'Convert CURL commands to Java code, supporting HttpClient',
+        'csharp_desc': 'Convert CURL commands to C# code, supporting HttpClient',
+        'ruby_desc': 'Convert CURL commands to Ruby code',
+        'go_desc': 'Convert CURL commands to Go code',
+        'swift_desc': 'Convert CURL commands to Swift code',
+        'rust_desc': 'Convert CURL commands to Rust code',
+        'convert_to_python': 'Convert to Python',
+        'convert_to_javascript': 'Convert to JavaScript',
+        'convert_to_php': 'Convert to PHP',
+        'convert_to_java': 'Convert to Java',
+        'convert_to_csharp': 'Convert to C#',
+        'convert_to_ruby': 'Convert to Ruby',
+        'convert_to_go': 'Convert to Go',
+        'convert_to_swift': 'Convert to Swift',
+        'convert_to_rust': 'Convert to Rust',
+        'view_python_tutorial': 'View Python Tutorial'
     },
     
     // 中文翻译
@@ -164,11 +188,13 @@ const translations = {
         'use_case_2': '网络请求调试',
         'use_case_3': '自动化脚本编写',
         'use_case_4': '学习HTTP协议',
-        
         // 页脚
         'footer_nav_title': '快速导航',
         'footer_copyright': '© 2025 Curl转换器 | 将curl命令转换为多种编程语言的开发工具',
         'footer_description': '本工具旨在帮助开发者快速生成各种编程语言的API调用代码，支持Python、JavaScript、PHP、Java等多种语言，提高开发效率。',
+        'footer_about': '关于我们',
+        'footer_api': 'API文档',
+        
         
         // 语言切换
         'language_switch': '语言',
@@ -177,7 +203,29 @@ const translations = {
         'lang_hi': 'हिन्दी',
         'lang_fr': 'Français',
         'lang_de': 'Deutsch',
-        'lang_es': 'Español'
+        'lang_es': 'Español',
+        
+        // 语言链接区域
+        'lang_links_title': '转换CURL命令到各种编程语言',
+        'python_desc': '将CURL命令转换为Python代码，支持requests库',
+        'javascript_desc': '将CURL命令转换为JavaScript代码，支持fetch和XMLHttpRequest',
+        'php_desc': '将CURL命令转换为PHP代码，支持cURL扩展',
+        'java_desc': '将CURL命令转换为Java代码，支持HttpClient',
+        'csharp_desc': '将CURL命令转换为C#代码，支持HttpClient',
+        'ruby_desc': '将CURL命令转换为Ruby代码',
+        'go_desc': '将CURL命令转换为Go代码',
+        'swift_desc': '将CURL命令转换为Swift代码',
+        'rust_desc': '将CURL命令转换为Rust代码',
+        'convert_to_python': '转换为Python',
+        'convert_to_javascript': '转换为JavaScript',
+        'convert_to_php': '转换为PHP',
+        'convert_to_java': '转换为Java',
+        'convert_to_csharp': '转换为C#',
+        'convert_to_ruby': '转换为Ruby',
+        'convert_to_go': '转换为Go',
+        'convert_to_swift': '转换为Swift',
+        'convert_to_rust': '转换为Rust',
+        'view_python_tutorial': '查看Python教程'
     },
     
     // 印地语翻译
@@ -256,11 +304,13 @@ const translations = {
         'use_case_2': 'नेटवर्क अनुरोध डीबगिंग',
         'use_case_3': 'स्वचालन स्क्रिप्ट लेखन',
         'use_case_4': 'HTTP प्रोटोकॉल सीखना',
-        
         // 页脚
         'footer_nav_title': 'त्वरित नेविगेशन',
         'footer_copyright': '© 2025 Curl से JSON टूल | एक सरल और कुशल API डीबगिंग टूल',
         'footer_description': 'यह टूल डेवलपर्स को HTTP अनुरोधों को अधिक कुशलता से संभालने में मदद करने के लिए डिज़ाइन किया गया है, जिससे विकास और डीबगिंग उत्पादकता में सुधार होता है।',
+        'footer_about': 'परिचय',
+        'footer_api': 'API दस्तावेज़',
+        
         
         // 语言切换
         'language_switch': 'भाषा',
@@ -348,11 +398,13 @@ const translations = {
         'use_case_2': 'Débogage de requêtes réseau',
         'use_case_3': 'Rédaction de scripts d\'automatisation',
         'use_case_4': 'Apprentissage du protocole HTTP',
-        
         // 页脚
         'footer_nav_title': 'Navigation rapide',
         'footer_copyright': '© 2025 Outil Curl vers JSON | Un outil de débogage API simple et efficace',
         'footer_description': 'Cet outil est conçu pour aider les développeurs à gérer plus efficacement les requêtes HTTP, améliorant la productivité de développement et de débogage.',
+        'footer_about': 'À propos',
+        'footer_api': 'Documentation API',
+        
         
         // 语言切换
         'language_switch': 'Langue',
@@ -440,11 +492,39 @@ const translations = {
         'use_case_2': 'Debugging von Netzwerkanfragen',
         'use_case_3': 'Schreiben von Automatisierungsskripten',
         'use_case_4': 'Erlernen des HTTP-Protokolls',
-        
         // 页脚
         'footer_nav_title': 'Schnellnavigation',
         'footer_copyright': '© 2025 Curl zu JSON Tool | Ein einfaches und effizientes API-Debugging-Tool',
         'footer_description': 'Dieses Tool wurde entwickelt, um Entwicklern zu helfen, HTTP-Anfragen effizienter zu verarbeiten und die Entwicklungs- und Debugging-Produktivität zu verbessern.',
+        'footer_about': 'Über',
+        'footer_api': 'API-Dokumentation',
+        
+        // Tab按钮
+        'btn_curl_to_json': 'Curl konvertieren',
+        'btn_code_to_curl': 'Code zu Curl',
+        
+        // 语言链接区域
+        'lang_links_title': 'CURL-Befehle in verschiedene Programmiersprachen konvertieren',
+        'python_desc': 'CURL-Befehle in Python-Code konvertieren, unterstützt die requests-Bibliothek',
+        'javascript_desc': 'CURL-Befehle in JavaScript-Code konvertieren, unterstützt fetch und XMLHttpRequest',
+        'php_desc': 'CURL-Befehle in PHP-Code konvertieren, unterstützt cURL-Erweiterung',
+        'java_desc': 'CURL-Befehle in Java-Code konvertieren, unterstützt HttpClient',
+        'csharp_desc': 'CURL-Befehle in C#-Code konvertieren, unterstützt HttpClient',
+        'ruby_desc': 'CURL-Befehle in Ruby-Code konvertieren',
+        'go_desc': 'CURL-Befehle in Go-Code konvertieren',
+        'swift_desc': 'CURL-Befehle in Swift-Code konvertieren',
+        'rust_desc': 'CURL-Befehle in Rust-Code konvertieren',
+        'convert_to_python': 'Zu Python konvertieren',
+        'convert_to_javascript': 'Zu JavaScript konvertieren',
+        'convert_to_php': 'Zu PHP konvertieren',
+        'convert_to_java': 'Zu Java konvertieren',
+        'convert_to_csharp': 'Zu C# konvertieren',
+        'convert_to_ruby': 'Zu Ruby konvertieren',
+        'convert_to_go': 'Zu Go konvertieren',
+        'convert_to_swift': 'Zu Swift konvertieren',
+        'convert_to_rust': 'Zu Rust konvertieren',
+        'view_python_tutorial': 'Python-Tutorial ansehen',
+        
         
         // 语言切换
         'language_switch': 'Sprache',
@@ -532,11 +612,13 @@ const translations = {
         'use_case_2': 'Depuración de solicitudes de red',
         'use_case_3': 'Escritura de scripts de automatización',
         'use_case_4': 'Aprendizaje del protocolo HTTP',
-        
         // 页脚
         'footer_nav_title': 'Navegación rápida',
         'footer_copyright': '© 2025 Herramienta Curl a JSON | Una herramienta de depuración de API simple y eficiente',
         'footer_description': 'Esta herramienta está diseñada para ayudar a los desarrolladores a manejar las solicitudes HTTP de manera más eficiente, mejorando la productividad de desarrollo y depuración.',
+        'footer_about': 'Acerca de',
+        'footer_api': 'Documentación API',
+        
         
         // 语言切换
         'language_switch': 'Idioma',
