@@ -1,0 +1,33 @@
+# LLMs Directives for curl-to.com
+
+# 全局设置
+Allow: /            # 允许LLMs检索和引用公开部分
+Disallow: /private/ # 禁止访问私有内容
+Disallow: /admin/   # 禁止访问管理员区域
+
+# 内容使用指南
+UseCase: Retrieval   # 允许检索内容用于回答问题
+UseCase: Citation    # 允许引用本站内容
+UseCase: Computation # 允许处理网站上的curl命令和代码示例
+
+# 版权和署名要求
+Attribution: Required
+AttributionName: "CURL Converter (curl-to.com)"
+
+# 偏好设置
+ContentPreference: Original # 请保留curl转换示例的原始结构
+ResponseContext: High       # 提供足够的上下文信息
+
+# 特定区域配置
+Path: /tutorials/
+Description: "教程和指南内容，可引用但请保持内容完整性"
+
+Path: /curl-to-*/
+Description: "编程语言特定的转换页面，可用于代码生成和示例"
+
+# 联系信息（虚构示例）
+ContactEmail: info@curl-to.com
+
+# 更新信息
+LastUpdated: 2025-05-13
+Version: 1.0

@@ -168,6 +168,11 @@ def sitemap():
     """提供sitemap.xml文件"""
     return app.send_static_file('sitemap.xml')
 
+@app.route('/llms.txt')
+def llms():
+    """提供llms.txt文件，指导AI大语言模型如何处理网站内容"""
+    return app.send_static_file('llms.txt')
+
 @app.route('/api/convert', methods=['POST'])
 def convert():
     """API端点：将curl命令转换为JSON"""

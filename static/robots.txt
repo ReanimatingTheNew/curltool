@@ -1,10 +1,30 @@
+# 全局规则
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /private/
+Disallow: /*.pdf$
+Disallow: /*?*query=
 
-# 允许所有搜索引擎访问网站的大部分内容
-# 禁止访问管理员和私有页面
+# Google爬虫特定规则
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
 
-# 网站地图位置
+# Bing爬虫特定规则
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# 百度爬虫特定规则
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# 通用图片爬虫
+User-agent: Googlebot-Image
+Allow: /static/images/
+Disallow: /
+
+# 指定网站地图位置
 Sitemap: https://curl-to.com/sitemap.xml

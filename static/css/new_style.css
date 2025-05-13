@@ -622,6 +622,21 @@ footer a:hover {
     text-decoration: underline;
 }
 
+.external-links {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.external-links a {
+    color: var(--secondary-color);
+    margin: 0 5px;
+    transition: color 0.2s ease;
+}
+
+.external-links a:hover {
+    color: white;
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
     .main-header .container {
