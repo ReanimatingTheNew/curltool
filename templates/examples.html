@@ -4,45 +4,45 @@
 <section class="examples-section">
     <div class="container">
         <div class="section-header">
-            <h2 data-i18n="examples_title">使用示例</h2>
-            <p data-i18n="examples_description">以下是使用本工具API调用的各种编程语言示例代码</p>
+            <h2 data-i18n="examples_title">Usage Examples</h2>
+            <p data-i18n="examples_description">Below are example codes in various programming languages using this tool's API calls</p>
         </div>
         
         <div class="examples-grid">
-            <!-- 示例1：基本GET请求 -->
+            <!-- Example 1: Basic GET Request -->
             <div class="example-card">
-                <h3>基本GET请求</h3>
+                <h3>Basic GET Request</h3>
                 <div class="example-content">
                     <div class="example-input">
-                        <h4>Curl命令</h4>
-                        <pre><code class="bash">curl -X GET https://api.example.com/users</code></pre>
+                        <h4>Curl Command</h4>
+                        <pre><code class="bash">curl -X GET https://curl-to/users</code></pre>
                     </div>
                     <div class="example-output">
-                        <h4>生成的JSON</h4>
+                        <h4>Generated JSON</h4>
                         <pre><code class="json">{
   "method": "GET",
-  "url": "https://api.example.com/users",
+  "url": "https://curl-to/users",
   "headers": {}
 }</code></pre>
                     </div>
                 </div>
             </div>
             
-            <!-- 示例2：POST请求带JSON数据 -->
+            <!-- Example 2: POST Request with JSON Data -->
             <div class="example-card">
-                <h3>POST请求带JSON数据</h3>
+                <h3>POST Request with JSON Data</h3>
                 <div class="example-content">
                     <div class="example-input">
-                        <h4>Curl命令</h4>
-                        <pre><code class="bash">curl -X POST https://api.example.com/users \
+                        <h4>Curl Command</h4>
+                        <pre><code class="bash">curl -X POST https://curl-to/users \
   -H 'Content-Type: application/json' \
   -d '{"name":"John","email":"john@example.com"}'</code></pre>
                     </div>
                     <div class="example-output">
-                        <h4>生成的JSON</h4>
+                        <h4>Generated JSON</h4>
                         <pre><code class="json">{
   "method": "POST",
-  "url": "https://api.example.com/users",
+  "url": "https://curl-to/users",
   "headers": {
     "Content-Type": "application/json"
   },
@@ -55,22 +55,22 @@
                 </div>
             </div>
             
-            <!-- 示例3：带认证的PUT请求 -->
+            <!-- Example 3: PUT Request with Authentication -->
             <div class="example-card">
-                <h3>带认证的PUT请求</h3>
+                <h3>PUT Request with Authentication</h3>
                 <div class="example-content">
                     <div class="example-input">
-                        <h4>Curl命令</h4>
-                        <pre><code class="bash">curl -X PUT https://api.example.com/users/123 \
+                        <h4>Curl Command</h4>
+                        <pre><code class="bash">curl -X PUT https://curl-to/users/123 \
   -H 'Authorization: Bearer token123' \
   -H 'Content-Type: application/json' \
   -d '{"name":"Updated Name"}'</code></pre>
                     </div>
                     <div class="example-output">
-                        <h4>生成的JSON</h4>
+                        <h4>Generated JSON</h4>
                         <pre><code class="json">{
   "method": "PUT",
-  "url": "https://api.example.com/users/123",
+  "url": "https://curl-to/users/123",
   "headers": {
     "Authorization": "Bearer token123",
     "Content-Type": "application/json"
@@ -83,21 +83,21 @@
                 </div>
             </div>
             
-            <!-- 示例4：文件上传 -->
+            <!-- Example 4: File Upload -->
             <div class="example-card">
-                <h3>文件上传</h3>
+                <h3>File Upload</h3>
                 <div class="example-content">
                     <div class="example-input">
-                        <h4>Curl命令</h4>
-                        <pre><code class="bash">curl -X POST https://api.example.com/upload \
+                        <h4>Curl Command</h4>
+                        <pre><code class="bash">curl -X POST https://curl-to/upload \
   -F 'file=@/path/to/file.jpg' \
   -F 'description=Profile picture'</code></pre>
                     </div>
                     <div class="example-output">
-                        <h4>生成的JSON</h4>
+                        <h4>Generated JSON</h4>
                         <pre><code class="json">{
   "method": "POST",
-  "url": "https://api.example.com/upload",
+  "url": "https://curl-to/upload",
   "form_data": {
     "file": {
       "type": "file",
@@ -113,13 +113,13 @@
                 </div>
             </div>
             
-            <!-- 示例5：复杂请求 -->
+            <!-- Example 5: Complex Request -->
             <div class="example-card">
-                <h3>复杂请求与代理</h3>
+                <h3>Complex Request with Proxy</h3>
                 <div class="example-content">
                     <div class="example-input">
-                        <h4>Curl命令</h4>
-                        <pre><code class="bash">curl -X POST https://api.example.com/data \
+                        <h4>Curl Command</h4>
+                        <pre><code class="bash">curl -X POST https://curl-to/data \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Basic dXNlcjpwYXNz' \
   -H 'Accept: application/json' \
@@ -128,10 +128,10 @@
   -k</code></pre>
                     </div>
                     <div class="example-output">
-                        <h4>生成的JSON</h4>
+                        <h4>Generated JSON</h4>
                         <pre><code class="json">{
   "method": "POST",
-  "url": "https://api.example.com/data",
+  "url": "https://curl-to/data",
   "headers": {
     "Content-Type": "application/json",
     "Authorization": "Basic dXNlcjpwYXNz",
@@ -147,12 +147,12 @@
                 </div>
             </div>
             
-            <!-- 示例6：代码转Curl -->
+            <!-- Example 6: Code to Curl -->
             <div class="example-card">
-                <h3>从Python代码生成Curl</h3>
+                <h3>Generate Curl from Python Code</h3>
                 <div class="example-content">
                     <div class="example-input">
-                        <h4>Python代码</h4>
+                        <h4>Python Code</h4>
                         <pre><code class="python">import requests
 
 headers = {
@@ -165,14 +165,14 @@ data = {
     'email': 'john@example.com'
 }
 
-response = requests.post('https://api.example.com/users', 
+response = requests.post('https://curl-to/users', 
                         headers=headers, json=data)
 </code></pre>
                     </div>
                     <div class="example-output">
-                        <h4>生成的Curl命令</h4>
+                        <h4>Generated Curl Command</h4>
                         <pre><code class="bash">curl -X POST \
-  'https://api.example.com/users' \
+  'https://curl-to/users' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer token123' \
   -d '{"name":"John Doe","email":"john@example.com"}'</code></pre>

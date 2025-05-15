@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="{{ locale }}" class="lang-ready">
+<html lang="{{ locale|default('en') }}" class="lang-ready">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- TDK优化 -->
-    <title data-i18n="meta_title">Curl转换工具 | 多功能HTTP请求转换器</title>
-    <meta name="description" data-i18n="meta_description" content="强大的Curl转换工具，支持curl命令与JSON格式互转，以及生成多种编程语言代码。为开发者提供高效的API调试和HTTP请求处理解决方案。">
-    <meta name="keywords" data-i18n="meta_keywords" content="curl转换,curl命令解析,API调试工具,HTTP请求分析,代码生成">
+    <title data-i18n="meta_title">CURL Converter | HTTP Request Tool</title>
+    <meta name="description" data-i18n="meta_description" content="Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development. Transform HTTP requests easily.">
+    <meta name="keywords" data-i18n="meta_keywords" content="curl converter,curl to code,API testing,HTTP requests">
     
     <!-- 搜索引擎指令 -->
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#4361ee">
     
     <!-- 社交媒体标签 -->
-    <meta property="og:title" data-i18n="og_title" content="Curl转换工具 | 多功能HTTP请求转换器">
-    <meta property="og:description" data-i18n="og_description" content="强大的Curl转换工具，支持curl命令与JSON格式互转，以及生成多种编程语言代码。">
+    <meta property="og:title" data-i18n="og_title" content="CURL Converter | HTTP Request Tool">
+    <meta property="og:description" data-i18n="og_description" content="Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://curl-to.com/{{ locale }}">
     <meta property="og:image" content="https://curl-to.com/static/images/curl-converter-og.png">
     
     <!-- Twitter Cards 标签 -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" data-i18n="twitter_title" content="CURL Converter | 将CURL命令转换为多种编程语言代码">
-    <meta name="twitter:description" data-i18n="twitter_description" content="免费在线工具，可将curl命令转换为多种编程语言，包括Python、JavaScript、PHP、Java等。提升API测试和开发效率。">
+    <meta name="twitter:title" data-i18n="twitter_title" content="CURL Converter | HTTP Request Tool">
+    <meta name="twitter:description" data-i18n="twitter_description" content="Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development.">
     <meta name="twitter:image" content="https://curl-to.com/static/images/curl-converter-og.png">
     
     <!-- Canonical tag for SEO -->
@@ -65,8 +65,8 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "CURL Converter",
+        "@type": "WebApplication",
+        "name": "CURL to JSON Tool",
         "description": "Convert CURL commands to multiple programming languages including Python, JavaScript, PHP, Java, Ruby, C# and more. Perfect for API testing and code generation.",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Web",
@@ -82,14 +82,14 @@
     <header class="main-header">
         <div class="container">
             <div class="logo">
-                <h1 data-i18n="site_title">Curl转换工具</h1>
+                <h1 data-i18n="site_title">CURL Converter</h1>
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="/{{ locale }}" data-i18n="nav_tool">转换器</a></li>
-                    <li><a href="javascript:void(0);" onclick="window.location.href='/examples?locale={{ locale }}'" data-i18n="nav_examples">使用示例</a></li>
-                    <li><a href="javascript:void(0);" onclick="window.location.href='/api-docs?locale={{ locale }}'" data-i18n="nav_api">API文档</a></li>
-                    <li><a href="javascript:void(0);" onclick="window.location.href='/about?locale={{ locale }}'" data-i18n="nav_about">关于</a></li>
+                    <li><a href="/{{ locale }}" data-i18n="nav_tool">Converter</a></li>
+                    <li><a href="javascript:void(0);" onclick="window.location.href='/examples?locale={{ locale }}'" data-i18n="nav_examples">Examples</a></li>
+                    <li><a href="javascript:void(0);" onclick="window.location.href='/api-docs?locale={{ locale }}'" data-i18n="nav_api">API Docs</a></li>
+                    <li><a href="javascript:void(0);" onclick="window.location.href='/about?locale={{ locale }}'" data-i18n="nav_about">About</a></li>
                     <li class="language-selector-container">
                         <div class="language-select-wrapper">
                             <select id="language-selector" class="select-styled">
@@ -114,7 +114,7 @@
     
     <footer>
         <div class="container">
-            <p><span data-i18n="footer_copyright">© 2025 Curl转换工具</span> | <a href="/about?locale={{ locale }}" data-i18n="footer_about">关于我们</a> | <a href="/api-docs?locale={{ locale }}" data-i18n="footer_api">API文档</a></p>
+            <p><span data-i18n="footer_copyright">© 2025 CURL Converter</span> | <a href="/about?locale={{ locale }}" data-i18n="footer_about">About Us</a> | <a href="/api-docs?locale={{ locale }}" data-i18n="footer_api">API Docs</a></p>
             <div class="external-links">
                 <!-- External links with security attributes -->
                 <a href="https://github.com/curl-converter/website" target="_blank" rel="noopener noreferrer">GitHub</a> <span class="link-separator">|</span>
@@ -171,7 +171,7 @@
     <script src="{{ url_for('static', filename='js/translations.js') }}"></script>
     <script>
         // 存储当前语言
-        const currentLocale = "{{ locale }}";
+        const currentLocale = "{{ locale|default('en') }}";
         
         // 在页面完全加载前隐藏内容
         document.documentElement.classList.remove('lang-ready');
@@ -292,5 +292,18 @@
         }
     </script>
     {% block scripts %}{% endblock %}
+
+
+    <div style="display:none">
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7HJSNHRX6V"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-7HJSNHRX6V');
+        </script>
+    </div>
 </body>
 </html>

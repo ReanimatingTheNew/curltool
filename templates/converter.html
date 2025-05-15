@@ -4,21 +4,21 @@
 <section class="converter-section">
     <div class="container">
         <div class="converter-header">
-            <h2 data-i18n="tool_title">HTTP请求转换器</h2>
-            <p data-i18n="tool_description">在不同格式之间转换HTTP请求，支持curl命令、JSON和多种编程语言</p>
+            <h2 data-i18n="tool_title">HTTP Request Converter</h2>
+            <p data-i18n="tool_description">Convert HTTP requests between different formats, supporting curl commands, JSON, and multiple programming languages</p>
         </div>
         
         <div class="converter-tabs">
             <div class="tab-buttons">
-                <button class="tab-btn active" data-converter="curl-to-anything" data-i18n="btn_curl_to_json">Curl转换</button>
-                <button class="tab-btn" data-converter="code-to-curl" data-i18n="btn_code_to_curl">代码转Curl</button>
+                <button class="tab-btn active" data-converter="curl-to-anything" data-i18n="btn_curl_to_json">Curl Converter</button>
+                <button class="tab-btn" data-converter="code-to-curl" data-i18n="btn_code_to_curl">Code to Curl</button>
             </div>
             
-            <!-- Curl转换面板 -->
+            <!-- Curl Converter Panel -->
             <div id="curl-to-anything" class="converter-panel active">
                 <div class="panel-header">
                     <div class="output-format">
-                        <label for="outputFormat" data-i18n="output_format_label">输出格式:</label>
+                        <label for="outputFormat" data-i18n="output_format_label">Output Format:</label>
                         <select id="outputFormat" class="select-styled">
                             <option value="json" data-i18n="format_json">JSON</option>
                             <option value="python" data-i18n="format_python">Python</option>
@@ -35,14 +35,14 @@
                     </div>
                     
                     <div class="examples-dropdown">
-                        <label for="curlExamples" data-i18n="examples_label">示例:</label>
+                        <label for="curlExamples" data-i18n="examples_label">Examples:</label>
                         <select id="curlExamples" class="select-styled">
-                            <option value="" data-i18n="examples_select">选择示例</option>
-                            <option value="curl -X GET https://api.example.com/users" data-i18n="example_get">简单GET请求</option>
-                            <option value="curl -X POST https://api.example.com/users -H 'Content-Type: application/json' -d '{\"name\":\"John\",\"email\":\"john@example.com\"}'" data-i18n="example_post_json">带JSON数据的POST请求</option>
-                            <option value="curl -X PUT https://api.example.com/users/123 -H 'Authorization: Bearer token123' -H 'Content-Type: application/json' -d '{\"name\":\"Updated Name\"}'" data-i18n="example_put_auth">带认证的PUT请求</option>
-                            <option value="curl -X DELETE https://api.example.com/users/123 -H 'Authorization: Bearer token123'" data-i18n="example_delete">DELETE请求</option>
-                            <option value="curl -X POST https://api.example.com/upload -F 'file=@/path/to/file.jpg' -F 'description=Profile picture'" data-i18n="example_form_data">表单数据上传</option>
+                            <option value="" data-i18n="examples_select">Select an Example</option>
+                            <option value="curl -X GET https://api.example.com/users" data-i18n="example_get">Simple GET Request</option>
+                            <option value="curl -X POST https://api.example.com/users -H 'Content-Type: application/json' -d '{\"name\":\"John\",\"email\":\"john@example.com\"}'" data-i18n="example_post_json">POST Request with JSON Data</option>
+                            <option value="curl -X PUT https://api.example.com/users/123 -H 'Authorization: Bearer token123' -H 'Content-Type: application/json' -d '{\"name\":\"Updated Name\"}'" data-i18n="example_put_auth">PUT Request with Authentication</option>
+                            <option value="curl -X DELETE https://api.example.com/users/123 -H 'Authorization: Bearer token123'" data-i18n="example_delete">DELETE Request</option>
+                            <option value="curl -X POST https://api.example.com/upload -F 'file=@/path/to/file.jpg' -F 'description=Profile picture'" data-i18n="example_form_data">Form Data Upload</option>
                         </select>
                     </div>
                 </div>
@@ -50,35 +50,35 @@
                 <div class="converter-content">
                     <div class="input-area">
                         <div class="area-header">
-                            <h3 data-i18n="input_title">输入Curl命令</h3>
+                            <h3 data-i18n="input_title">Enter Curl Command</h3>
                             <div class="area-actions">
-                                <button id="clearBtn" class="btn-secondary" data-i18n="btn_clear">清除</button>
+                                <button id="clearBtn" class="btn-secondary" data-i18n="btn_clear">Clear</button>
                             </div>
                         </div>
-                        <textarea id="curlInput" data-i18n-placeholder="input_placeholder" placeholder="在此粘贴您的curl命令，例如: curl -X GET https://api.example.com"></textarea>
+                        <textarea id="curlInput" data-i18n-placeholder="input_placeholder" placeholder="Paste your curl command here, e.g.: curl -X GET https://api.example.com"></textarea>
                         <div class="area-footer">
-                            <button id="convertBtn" class="btn-primary" data-i18n="btn_convert">转换</button>
+                            <button id="convertBtn" class="btn-primary" data-i18n="btn_convert">Convert</button>
                         </div>
                     </div>
                     
                     <div class="output-area">
                         <div class="area-header">
-                            <h3 id="outputTitle" data-i18n="output_title">输出结果</h3>
+                            <h3 id="outputTitle" data-i18n="output_title">Output Result</h3>
                             <div class="area-actions">
-                                <button id="copyBtn" class="btn-secondary" data-i18n="btn_copy">复制</button>
-                                <button id="formatBtn" class="btn-secondary" data-i18n="btn_format">格式化</button>
+                                <button id="copyBtn" class="btn-secondary" data-i18n="btn_copy">Copy</button>
+                                <button id="formatBtn" class="btn-secondary" data-i18n="btn_format">Format</button>
                             </div>
                         </div>
-                        <pre><code id="jsonOutput" class="json" data-i18n="output_placeholder">// 转换结果将显示在这里</code></pre>
+                        <pre><code id="jsonOutput" class="json" data-i18n="output_placeholder">// Conversion result will be displayed here</code></pre>
                     </div>
                 </div>
             </div>
             
-            <!-- 代码转Curl面板 -->
+            <!-- Code to Curl Panel -->
             <div id="code-to-curl" class="converter-panel">
                 <div class="panel-header">
                     <div class="language-selection">
-                        <label for="codeLanguage" data-i18n="language_label">代码语言:</label>
+                        <label for="codeLanguage" data-i18n="language_label">Code Language:</label>
                         <select id="codeLanguage" class="select-styled">
                             <option value="python" data-i18n="lang_python">Python</option>
                             <option value="javascript" data-i18n="lang_javascript">JavaScript</option>
@@ -87,11 +87,11 @@
                     </div>
                     
                     <div class="examples-dropdown">
-                        <label for="codeExamples" data-i18n="examples_label">示例:</label>
+                        <label for="codeExamples" data-i18n="examples_label">Examples:</label>
                         <select id="codeExamples" class="select-styled">
-                            <option value="" data-i18n="examples_select">选择示例</option>
-                            <option value="python-get" data-i18n="example_python_get">Python - GET请求</option>
-                            <option value="python-post" data-i18n="example_python_post">Python - POST请求</option>
+                            <option value="" data-i18n="examples_select">Select Example</option>
+                            <option value="python-get" data-i18n="example_python_get">Python - GET Request</option>
+                            <option value="python-post" data-i18n="example_python_post">Python - POST Request</option>
                             <option value="javascript-fetch" data-i18n="example_js_fetch">JavaScript - Fetch API</option>
                             <option value="javascript-axios" data-i18n="example_js_axios">JavaScript - Axios</option>
                             <option value="php-curl" data-i18n="example_php_curl">PHP - cURL</option>
@@ -102,25 +102,25 @@
                 <div class="converter-content">
                     <div class="input-area">
                         <div class="area-header">
-                            <h3 data-i18n="code_input_title">输入代码</h3>
+                            <h3 data-i18n="code_input_title">Enter Code</h3>
                             <div class="area-actions">
-                                <button id="clearCodeBtn" class="btn-secondary" data-i18n="btn_clear">清除</button>
+                                <button id="clearCodeBtn" class="btn-secondary" data-i18n="btn_clear">Clear</button>
                             </div>
                         </div>
-                        <textarea id="codeInput" data-i18n-placeholder="code_input_placeholder" placeholder="在此粘贴您的代码"></textarea>
+                        <textarea id="codeInput" data-i18n-placeholder="code_input_placeholder" placeholder="Paste your code here"></textarea>
                         <div class="area-footer">
-                            <button id="convertCodeBtn" class="btn-primary" data-i18n="btn_convert">转换</button>
+                            <button id="convertCodeBtn" class="btn-primary" data-i18n="btn_convert">Convert</button>
                         </div>
                     </div>
                     
                     <div class="output-area">
                         <div class="area-header">
-                            <h3 data-i18n="curl_output_title">Curl命令</h3>
+                            <h3 data-i18n="curl_output_title">Curl Command</h3>
                             <div class="area-actions">
-                                <button id="copyCurlBtn" class="btn-secondary" data-i18n="btn_copy">复制</button>
+                                <button id="copyCurlBtn" class="btn-secondary" data-i18n="btn_copy">Copy</button>
                             </div>
                         </div>
-                        <pre><code id="curlOutput" class="bash" data-i18n="curl_output_placeholder">// Curl命令将显示在这里</code></pre>
+                        <pre><code id="curlOutput" class="bash" data-i18n="curl_output_placeholder">// Curl command will be displayed here</code></pre>
                     </div>
                 </div>
             </div>

@@ -6,50 +6,51 @@
         <div class="converter-header">
             {% if target_language is defined %}
                 {% if target_language == "python" %}
-                    <h1>Convert CURL to Python | CURL to Python Converter</h1>
+                    <h2 class="page-subtitle">Convert CURL to Python | CURL to Python Converter</h2>
                     <p>Transform CURL commands to Python code with our free online converter. Perfect for requests, API testing and integration.</p>
                 {% elif target_language == "javascript" %}
-                    <h1>Convert CURL to JavaScript | CURL to JS Converter</h1>
+                    <h2 class="page-subtitle">Convert CURL to JavaScript | CURL to JS Converter</h2>
                     <p>Transform CURL commands to JavaScript code with our free online converter. Perfect for fetch API, Axios and Node.js.</p>
                 {% elif target_language == "php" %}
-                    <h1>Convert CURL to PHP | CURL to PHP Converter</h1>
+                    <h2 class="page-subtitle">Convert CURL to PHP | CURL to PHP Converter</h2>
                     <p>Transform CURL commands to PHP code with our free online converter. Perfect for API requests and backend integration.</p>
                 {% elif target_language == "java" %}
-                    <h1>Convert CURL to Java | CURL to Java Converter</h1>
+                    <h2 class="page-subtitle">Convert CURL to Java | CURL to Java Converter</h2>
                     <p>Transform CURL commands to Java code with our free online converter. Perfect for HttpClient, OkHttp and API integration.</p>
                 {% elif target_language == "csharp" %}
-                    <h1>Convert CURL to C# | CURL to C# Converter</h1>
+                    <h2 class="page-subtitle">Convert CURL to C# | CURL to C# Converter</h2>
                     <p>Transform CURL commands to C# code with our free online converter. Perfect for HttpClient, RestSharp and .NET integration.</p>
                 {% elif target_language == "ruby" %}
-                    <h1>Convert CURL to Ruby | CURL to Ruby Converter</h1>
+                    <h2 class="page-subtitle">Convert CURL to Ruby | CURL to Ruby Converter</h2>
                     <p>Transform CURL commands to Ruby code with our free online converter. Perfect for API requests and backend integration.</p>
                 {% elif target_language == "go" %}
-                    <h1>Convert CURL to Go | CURL to Go Converter</h1>
+                    <h2 class="page-subtitle">Convert CURL to Go | CURL to Go Converter</h2>
                     <p>Transform CURL commands to Go code with our free online converter. Perfect for API requests and backend integration.</p>
                 {% elif target_language == "swift" %}
-                    <h1>Convert CURL to Swift | CURL to Swift Converter</h1>
+                    <h2 class="page-subtitle">Convert CURL to Swift | CURL to Swift Converter</h2>
                     <p>Transform CURL commands to Swift code with our free online converter. Perfect for iOS and macOS app development.</p>
                 {% elif target_language == "rust" %}
-                    <h1>Convert CURL to Rust | CURL to Rust Converter</h1>
+                    <h2 class="page-subtitle">Convert CURL to Rust | CURL to Rust Converter</h2>
                     <p>Transform CURL commands to Rust code with our free online converter. Perfect for API integration and reliable HTTP clients.</p>
                 {% endif %}
             {% else %}
-                <h1 data-i18n="tool_title">HTTP请求转换器</h1>
-                <p data-i18n="tool_description">在不同格式之间转换HTTP请求，支持curl命令、JSON和多种编程语言</p>
+                <h1 data-i18n="tool_title">CURL Converter Tool</h1>
+                <p data-i18n="tool_description">Convert HTTP requests between different formats, supporting curl commands, JSON, and multiple programming languages</p>
             {% endif %}
         </div>
         
         <div class="converter-tabs">
             <div class="tab-buttons">
-                <button class="tab-btn active" data-converter="curl-to-anything" data-i18n="btn_curl_to_json">Curl转换</button>
-                <button class="tab-btn" data-converter="code-to-curl" data-i18n="btn_code_to_curl">代码转Curl</button>
+                <button class="tab-btn active" data-converter="curl-to-anything" data-i18n="btn_curl_to_json">Curl Converter</button>
+                <button class="tab-btn" data-converter="code-to-curl" data-i18n="btn_code_to_curl">Code to Curl</button>
             </div>
             
-            <!-- Curl转换面板 -->
+            <h2 class="section-title">Curl Command Converter</h2>
+            <!-- Curl Conversion Panel -->
             <div id="curl-to-anything" class="converter-panel active">
                 <div class="panel-header">
                     <div class="output-format">
-                        <label for="outputFormat" data-i18n="output_format_label">输出格式:</label>
+                        <label for="outputFormat" data-i18n="output_format_label">Output format:</label>
                         <select id="outputFormat" class="select-styled">
                             <option value="json" {% if target_language is not defined %}selected{% endif %} data-i18n="format_json">JSON</option>
                             <option value="python" {% if target_language == "python" %}selected{% endif %} data-i18n="format_python">Python</option>
@@ -69,14 +70,14 @@
                     </div>
                     
                     <div class="examples-dropdown">
-                        <label for="curlExamples" data-i18n="examples_label">示例:</label>
+                        <label for="curlExamples" data-i18n="examples_label">Examples:</label>
                         <select id="curlExamples" class="select-styled">
-                            <option value="" data-i18n="examples_select">选择示例</option>
-                            <option value="curl -X GET https://api.example.com/users" data-i18n="example_get">简单GET请求</option>
-                            <option value="curl -X POST https://api.example.com/users -H 'Content-Type: application/json' -d '{\"name\":\"John\",\"email\":\"john@example.com\"}'" data-i18n="example_post_json">带JSON数据的POST请求</option>
-                            <option value="curl -X PUT https://api.example.com/users/123 -H 'Authorization: Bearer token123' -H 'Content-Type: application/json' -d '{\"name\":\"Updated Name\"}'" data-i18n="example_put_auth">带认证的PUT请求</option>
-                            <option value="curl -X DELETE https://api.example.com/users/123 -H 'Authorization: Bearer token123'" data-i18n="example_delete">DELETE请求</option>
-                            <option value="curl -X POST https://api.example.com/upload -F 'file=@/path/to/file.jpg' -F 'description=Profile picture'" data-i18n="example_form_data">表单数据上传</option>
+                            <option value="" data-i18n="examples_select">Select</option>
+                            <option value="curl -X GET https://api.example.com/users" data-i18n="example_get">Simple GET request</option>
+                            <option value="curl -X POST https://api.example.com/users -H 'Content-Type: application/json' -d '{\"name\":\"John\",\"email\":\"john@example.com\"}'" data-i18n="example_post_json">POST with JSON data</option>
+                            <option value="curl -X PUT https://api.example.com/users/123 -H 'Authorization: Bearer token123' -H 'Content-Type: application/json' -d '{\"name\":\"Updated Name\"}'" data-i18n="example_put_auth">PUT with Authorization</option>
+                            <option value="curl -X DELETE https://api.example.com/users/123 -H 'Authorization: Bearer token123'" data-i18n="example_delete">DELETE request</option>
+                            <option value="curl -X POST https://api.example.com/upload -F 'file=@/path/to/file.jpg' -F 'description=Profile picture'" data-i18n="example_form_data">Form data upload</option>
                         </select>
                     </div>
                 </div>
@@ -84,33 +85,34 @@
                 <div class="converter-content">
                     <div class="input-area">
                         <div class="area-header">
-                            <h3 data-i18n="input_title">输入Curl命令</h3>
+                            <h3 data-i18n="input_title">Enter Curl Command</h3>
                             <div class="area-actions">
-                                <button id="clearBtn" class="btn-secondary" data-i18n="btn_clear">清除</button>
-                                <button id="convertBtn" class="btn-primary" data-i18n="btn_convert">转换</button>
+                                <button id="clearBtn" class="btn-secondary" data-i18n="btn_clear">Clear</button>
+                                <button id="convertBtn" class="btn-primary" data-i18n="btn_convert">Convert</button>
                             </div>
                         </div>
-                        <textarea id="curlInput" data-i18n-placeholder="input_placeholder" placeholder="在此粘贴您的curl命令，例如: curl -X GET https://api.example.com"></textarea>
+                        <textarea id="curlInput" data-i18n-placeholder="input_placeholder" placeholder="Paste your curl command here, for example: curl -X GET https://api.example.com"></textarea>
                     </div>
                     
                     <div class="output-area">
                         <div class="area-header">
-                            <h3 id="outputTitle" data-i18n="output_title">输出结果</h3>
+                            <h3 id="outputTitle" data-i18n="output_title">Output Result</h3>
                             <div class="area-actions">
-                                <button id="copyBtn" class="btn-secondary" data-i18n="btn_copy">复制</button>
-                                <button id="formatBtn" class="btn-secondary" data-i18n="btn_format">格式化</button>
+                                <button id="copyBtn" class="btn-secondary" data-i18n="btn_copy">Copy</button>
+                                <button id="formatBtn" class="btn-secondary" data-i18n="btn_format">Format</button>
                             </div>
                         </div>
-                        <pre><code id="jsonOutput" class="json" data-i18n="output_placeholder">// 转换结果将显示在这里</code></pre>
+                        <pre><code id="jsonOutput" class="json" data-i18n="output_placeholder">// Conversion result will be displayed here</code></pre>
                     </div>
                 </div>
             </div>
             
-            <!-- 代码转Curl面板 -->
+            <h2 class="section-title">Code to Curl Converter</h2>
+            <!-- Code to Curl Panel -->
             <div id="code-to-curl" class="converter-panel">
                 <div class="panel-header">
                     <div class="language-selection">
-                        <label for="codeLanguage" data-i18n="language_label">代码语言:</label>
+                        <label for="codeLanguage" data-i18n="language_label">Code language:</label>
                         <select id="codeLanguage" class="select-styled">
                             <option value="python" data-i18n="lang_python">Python</option>
                             <option value="javascript" data-i18n="lang_javascript">JavaScript</option>
@@ -119,11 +121,11 @@
                     </div>
                     
                     <div class="examples-dropdown">
-                        <label for="codeExamples" data-i18n="examples_label">示例:</label>
+                        <label for="codeExamples" data-i18n="examples_label">Examples:</label>
                         <select id="codeExamples" class="select-styled">
-                            <option value="" data-i18n="examples_select">选择示例</option>
-                            <option value="python-get" data-i18n="example_python_get">Python - GET请求</option>
-                            <option value="python-post" data-i18n="example_python_post">Python - POST请求</option>
+                            <option value="" data-i18n="examples_select">Select</option>
+                            <option value="python-get" data-i18n="example_python_get">Python - GET Request</option>
+                            <option value="python-post" data-i18n="example_python_post">Python - POST Request</option>
                             <option value="javascript-fetch" data-i18n="example_js_fetch">JavaScript - Fetch API</option>
                             <option value="javascript-axios" data-i18n="example_js_axios">JavaScript - Axios</option>
                             <option value="php-curl" data-i18n="example_php_curl">PHP - cURL</option>
@@ -134,78 +136,78 @@
                 <div class="converter-content">
                     <div class="input-area">
                         <div class="area-header">
-                            <h3 data-i18n="code_input_title">输入代码</h3>
+                            <h3 data-i18n="code_input_title">Enter Code</h3>
                             <div class="area-actions">
-                                <button id="clearCodeBtn" class="btn-secondary" data-i18n="btn_clear">清除</button>
-                                <button id="convertCodeBtn" class="btn-primary" data-i18n="btn_convert">转换</button>
+                                <button id="clearCodeBtn" class="btn-secondary" data-i18n="btn_clear">Clear</button>
+                                <button id="convertCodeBtn" class="btn-primary" data-i18n="btn_convert">Convert</button>
                             </div>
                         </div>
-                        <textarea id="codeInput" data-i18n-placeholder="code_input_placeholder" placeholder="在此粘贴您的代码"></textarea>
+                        <textarea id="codeInput" data-i18n-placeholder="code_input_placeholder" placeholder="Paste your code here"></textarea>
                     </div>
                     
                     <div class="output-area">
                         <div class="area-header">
-                            <h3 data-i18n="curl_output_title">Curl命令</h3>
+                            <h3 data-i18n="curl_output_title">Curl Command</h3>
                             <div class="area-actions">
-                                <button id="copyCurlBtn" class="btn-secondary" data-i18n="btn_copy">复制</button>
+                                <button id="copyCurlBtn" class="btn-secondary" data-i18n="btn_copy">Copy</button>
                             </div>
                         </div>
-                        <pre><code id="curlOutput" class="bash" data-i18n="curl_output_placeholder">// Curl命令将显示在这里</code></pre>
+                        <pre><code id="curlOutput" class="bash" data-i18n="curl_output_placeholder">// Curl command will be displayed here</code></pre>
                     </div>
                 </div>
             </div>
             
-            <!-- SEO优化：语言转换链接区域 -->
+            <!-- SEO Optimization: Language Conversion Links Area -->
             {% if not target_language %}
             <div class="language-links-section">
                 <div class="container">
-                    <h2 data-i18n="lang_links_title">转换CURL命令到各种编程语言</h2>
+                    <h2 data-i18n="lang_links_title">Programming Language Options</h2>
                     <div class="language-links-grid">
                         <div class="language-link-card">
                             <h3><a href="/curl-to-python/">CURL to Python</a></h3>
-                            <p data-i18n="python_desc">将CURL命令转换为Python代码，支持requests库</p>
-                            <a href="/curl-to-python/" class="btn-link" data-i18n="convert_to_python">转换为Python</a>
-                            <a href="/tutorials/curl-to-python/" class="tutorial-link" data-i18n="view_python_tutorial">查看Python教程</a>
+                            <p data-i18n="python_desc">Convert CURL commands to Python code, supporting the requests library</p>
+                            <a href="/curl-to-python/" class="btn-link" data-i18n="convert_to_python">Convert to Python</a>
+                            <a href="/tutorials/curl-to-python/" class="tutorial-link" data-i18n="view_python_tutorial">View Python Tutorial</a>
                         </div>
                         <div class="language-link-card">
                             <h3><a href="/curl-to-javascript/">CURL to JavaScript</a></h3>
-                            <p data-i18n="javascript_desc">将CURL命令转换为JavaScript代码，支持fetch和XMLHttpRequest</p>
-                            <a href="/curl-to-javascript/" class="btn-link" data-i18n="convert_to_javascript">转换为JavaScript</a>
+                            <p data-i18n="javascript_desc">Convert CURL commands to JavaScript code, supporting fetch and XMLHttpRequest</p>
+                            <a href="/curl-to-javascript/" class="btn-link" data-i18n="convert_to_javascript">Convert to JavaScript</a>
                         </div>
                         <div class="language-link-card">
                             <h3><a href="/curl-to-php/">CURL to PHP</a></h3>
-                            <p data-i18n="php_desc">将CURL命令转换为PHP代码，支持cURL扩展</p>
-                            <a href="/curl-to-php/" class="btn-link" data-i18n="convert_to_php">转换为PHP</a>
+                            <p data-i18n="php_desc">Convert CURL commands to PHP code, supporting cURL extension</p>
+                            <a href="/curl-to-php/" class="btn-link" data-i18n="convert_to_php">Convert to PHP</a>
                         </div>
                         <div class="language-link-card">
                             <h3><a href="/curl-to-java/">CURL to Java</a></h3>
-                            <p data-i18n="java_desc">将CURL命令转换为Java代码，支持HttpClient</p>
-                            <a href="/curl-to-java/" class="btn-link" data-i18n="convert_to_java">转换为Java</a>
+                            <p data-i18n="java_desc">Convert CURL commands to Java code, supporting HttpClient</p>
+                            <a href="/curl-to-java/" class="btn-link" data-i18n="convert_to_java">Convert to Java</a>
                         </div>
                         <div class="language-link-card">
                             <h3><a href="/curl-to-csharp/">CURL to C#</a></h3>
-                            <p data-i18n="csharp_desc">将CURL命令转换为C#代码，支持HttpClient</p>
-                            <a href="/curl-to-csharp/" class="btn-link" data-i18n="convert_to_csharp">转换为C#</a>
+                            <p data-i18n="csharp_desc">Convert CURL commands to C# code, supporting HttpClient</p>
+                            <a href="/curl-to-csharp/" class="btn-link" data-i18n="convert_to_csharp">Convert to C#</a>
                         </div>
                         <div class="language-link-card">
                             <h3><a href="/curl-to-ruby/">CURL to Ruby</a></h3>
-                            <p data-i18n="ruby_desc">将CURL命令转换为Ruby代码</p>
-                            <a href="/curl-to-ruby/" class="btn-link" data-i18n="convert_to_ruby">转换为Ruby</a>
+                            <p data-i18n="ruby_desc">Convert CURL commands to Ruby code</p>
+                            <a href="/curl-to-ruby/" class="btn-link" data-i18n="convert_to_ruby">Convert to Ruby</a>
                         </div>
                         <div class="language-link-card">
                             <h3><a href="/curl-to-go/">CURL to Go</a></h3>
-                            <p data-i18n="go_desc">将CURL命令转换为Go代码</p>
-                            <a href="/curl-to-go/" class="btn-link" data-i18n="convert_to_go">转换为Go</a>
+                            <p data-i18n="go_desc">Convert CURL commands to Go code</p>
+                            <a href="/curl-to-go/" class="btn-link" data-i18n="convert_to_go">Convert to Go</a>
                         </div>
                         <div class="language-link-card">
                             <h3><a href="/curl-to-swift/">CURL to Swift</a></h3>
-                            <p data-i18n="swift_desc">将CURL命令转换为Swift代码</p>
-                            <a href="/curl-to-swift/" class="btn-link" data-i18n="convert_to_swift">转换为Swift</a>
+                            <p data-i18n="swift_desc">Convert CURL commands to Swift code</p>
+                            <a href="/curl-to-swift/" class="btn-link" data-i18n="convert_to_swift">Convert to Swift</a>
                         </div>
                         <div class="language-link-card">
                             <h3><a href="/curl-to-rust/">CURL to Rust</a></h3>
-                            <p data-i18n="rust_desc">将CURL命令转换为Rust代码</p>
-                            <a href="/curl-to-rust/" class="btn-link" data-i18n="convert_to_rust">转换为Rust</a>
+                            <p data-i18n="rust_desc">Convert CURL commands to Rust code</p>
+                            <a href="/curl-to-rust/" class="btn-link" data-i18n="convert_to_rust">Convert to Rust</a>
                         </div>
                     </div>
                 </div>

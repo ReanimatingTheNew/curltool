@@ -168,6 +168,16 @@ def sitemap():
     """提供sitemap.xml文件"""
     return app.send_static_file('sitemap.xml')
 
+@app.route('/BingSiteAuth.xml')
+def bing_site_auth():
+    """提供BingSiteAuth.xml文件，用于Bing网站验证"""
+    return app.send_static_file('BingSiteAuth.xml')
+
+@app.route('/2a31de34a07f42dba5238b80bbd504de.txt')
+def indexnow_key():
+    """提供IndexNow API密钥文件"""
+    return app.send_static_file('2a31de34a07f42dba5238b80bbd504de.txt')
+
 @app.route('/llms.txt')
 def llms():
     """提供llms.txt文件，指导AI大语言模型如何处理网站内容"""

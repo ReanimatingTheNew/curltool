@@ -115,19 +115,19 @@ const translations = {
     // 中文翻译
     'zh': {
         // 元数据
-        'meta_title': 'CURL转换器 - 将CURL命令转换为代码 | Curl转换器',
-        'meta_description': '免费在线curl命令转换工具，支持将curl命令转换为Python、JavaScript、JSON、PHP、Ruby、Java等多种编程语言代码。完美适用于API测试和代码生成。',
-        'meta_keywords': 'curl转换器,curl转python,curl转json,curl转javascript,curl转php,curl转java,curl命令转换,curl代码生成器,curl解析,API测试工具',
+        'meta_title': 'CURL Converter | HTTP Request Tool',
+        'meta_description': 'Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development. Transform HTTP requests easily.',
+        'meta_keywords': 'curl converter,curl to code,API testing,HTTP requests',
         
         // 社交媒体标签
-        'og_title': 'Curl转换器 | 将curl命令转换为Python、JSON、PHP等多种语言',
-        'og_description': '免费在线工具，可将curl命令转换为多种编程语言，包括Python、JavaScript、PHP、Ruby、Java、C#以及结构化JSON格式。',
-        'twitter_title': 'Curl转换器 | 将curl命令转换为Python、JSON、PHP等多种语言',
-        'twitter_description': '免费在线工具，可将curl命令转换为多种编程语言，包括Python、JavaScript、PHP、Ruby、Java、C#以及结构化JSON格式。',
+        'og_title': 'CURL Converter | HTTP Request Tool',
+        'og_description': 'Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development.',
+        'twitter_title': 'CURL Converter | HTTP Request Tool',
+        'twitter_description': 'Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development. Transform HTTP requests easily.',
         
         // 页面标题和描述
-        'site_title': 'Curl转换器',
-        'site_description': '为开发者提供curl命令转换为多种编程语言和格式的在线工具',
+        'site_title': 'Curl Converter',
+        'site_description': 'Convert curl commands to multiple programming languages and formats for developers',
         
         // 导航菜单
         'nav_tool': '在线转换工具',
@@ -231,19 +231,19 @@ const translations = {
     // 印地语翻译
     'hi': {
         // 元数据
-        'meta_title': 'Curl से JSON टूल | ऑनलाइन curl कमांड कनवर्टर',
-        'meta_description': 'हमारे टूल से curl कमांड को JSON प्रारूप में बदलें। जटिल पैरामीटर पार्सिंग का समर्थन करता है और डेवलपर्स को HTTP अनुरोधों के विश्लेषण के लिए साफ इंटरफेस प्रदान करता है।',
-        'meta_keywords': 'curl से json,curl कमांड पार्सर,API डीबगिंग टूल,HTTP अनुरोध विश्लेषण',
+        'meta_title': 'CURL Converter | HTTP Request Tool',
+        'meta_description': 'Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development. Transform HTTP requests easily.',
+        'meta_keywords': 'curl converter,curl to code,API testing,HTTP requests',
         
         // 社交媒体标签
-        'og_title': 'Curl से JSON टूल | ऑनलाइन curl कमांड को JSON प्रारूप में बदलें',
-        'og_description': 'जल्दी से curl कमांड को संरचित JSON प्रारूप में बदलें, विभिन्न जटिल पैरामीटर पार्सिंग का समर्थन करें। एक साफ वेब इंटरफेस और API प्रदान करता है।',
-        'twitter_title': 'Curl से JSON टूल | ऑनलाइन curl कमांड को JSON प्रारूप में बदलें',
-        'twitter_description': 'जल्दी से curl कमांड को संरचित JSON प्रारूप में बदलें, विभिन्न जटिल पैरामीटर पार्सिंग का समर्थन करें। एक साफ वेब इंटरफेस और API प्रदान करता है।',
+        'og_title': 'CURL Converter | HTTP Request Tool',
+        'og_description': 'Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development.',
+        'twitter_title': 'CURL Converter | HTTP Request Tool',
+        'twitter_description': 'Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development. Transform HTTP requests easily.',
         
         // 页面标题和描述
-        'site_title': 'Curl से JSON टूल',
-        'site_description': 'HTTP अनुरोधों के त्वरित विश्लेषण और प्रसंस्करण के लिए curl कमांड को JSON प्रारूप में बदलें',
+        'site_title': 'Curl Converter',
+        'site_description': 'Convert curl commands to multiple programming languages and formats for developers',
         
         // 导航菜单
         'nav_tool': 'ऑनलाइन कन्वर्टर',
@@ -336,8 +336,8 @@ const translations = {
         'twitter_description': 'Convertissez rapidement les commandes curl en format JSON structuré, prenant en charge diverses analyses de paramètres complexes. Fournit une interface web claire et une API.',
         
         // 页面标题和描述
-        'site_title': 'Outil Curl vers JSON',
-        'site_description': 'Convertir les commandes curl en format JSON pour une analyse et un traitement rapides des requêtes HTTP',
+        'site_title': 'Curl Converter',
+        'site_description': 'Convert curl commands to multiple programming languages and formats for developers',
         
         // 导航菜单
         'nav_tool': 'Convertisseur en ligne',
@@ -430,8 +430,8 @@ const translations = {
         'twitter_description': 'Konvertieren Sie Curl-Befehle schnell in strukturiertes JSON-Format, mit Unterstützung für verschiedene komplexe Parameter-Parsing. Bietet eine übersichtliche Weboberfläche und API.',
         
         // 页面标题和描述
-        'site_title': 'Curl zu JSON Tool',
-        'site_description': 'Konvertieren Sie Curl-Befehle in JSON-Format für schnelle Analyse und Verarbeitung von HTTP-Anfragen',
+        'site_title': 'Curl Converter',
+        'site_description': 'Convert curl commands to multiple programming languages and formats for developers',
         
         // 导航菜单
         'nav_tool': 'Online-Konverter',
@@ -550,8 +550,8 @@ const translations = {
         'twitter_description': 'Convierte rápidamente comandos curl a formato JSON estructurado, admitiendo diversos análisis de parámetros complejos. Proporciona una interfaz web limpia y una API.',
         
         // 页面标题和描述
-        'site_title': 'Herramienta Curl a JSON',
-        'site_description': 'Convierte comandos curl a formato JSON para un análisis y procesamiento rápido de solicitudes HTTP',
+        'site_title': 'Curl Converter',
+        'site_description': 'Convert curl commands to multiple programming languages and formats for developers',
         
         // 导航菜单
         'nav_tool': 'Convertidor en línea',
