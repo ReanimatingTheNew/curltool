@@ -1,23 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 页面导航切换
-    const navLinks = document.querySelectorAll('.main-nav a');
+    // Page navigation switching - only for links with data-tab attribute
+    const tabNavLinks = document.querySelectorAll('.main-nav a[data-tab]');
     const tabContents = document.querySelectorAll('.tab-content');
     
-    navLinks.forEach(link => {
+    tabNavLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             
             // 移除所有活动状态
-            navLinks.forEach(l => l.classList.remove('active'));
+            tabNavLinks.forEach(l => l.classList.remove('active'));
             tabContents.forEach(tab => tab.classList.remove('active'));
             
             // 添加当前活动状态
             this.classList.add('active');
             
-            // 显示对应的内容区域
+            // Show corresponding content area
             const tabId = this.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
+            const tabElement = document.getElementById(tabId);
+            if (tabElement) {
+                tabElement.classList.add('active');
+            }
         });
+    });
+    
+    // Highlight current navigation item
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.main-nav a').forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
     });
     
     // 转换器面板切换
@@ -39,22 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 检查highlight.js是否加载
-    if (typeof hljs !== 'undefined') {
-        // 初始化代码高亮
-        hljs.highlightAll();
-    } else {
-        console.error('highlight.js 未加载，等待加载完成...');
-        // 尝试在稍后再初始化
-        setTimeout(function() {
-            if (typeof hljs !== 'undefined') {
-                hljs.highlightAll();
-            } else {
-                console.error('highlight.js 仍然未加载，请检查脚本引用');
-            }
-        }, 1000);
-    }
-    
     // Curl转换功能
     const curlInput = document.getElementById('curlInput');
     const jsonOutput = document.getElementById('jsonOutput');
@@ -75,12 +70,31 @@ document.addEventListener('DOMContentLoaded', function() {
         this.selectedIndex = 0; // 重置选择
     });
     
+    // 复制输入区域按钮
+    const copyInputBtn = document.getElementById('copyInputBtn');
+    if (copyInputBtn) {
+        copyInputBtn.addEventListener('click', function() {
+            const textToCopy = curlInput.value;
+            navigator.clipboard.writeText(textToCopy)
+                .then(() => {
+                    // 显示复制成功提示
+                    const originalText = this.textContent;
+                    this.textContent = 'Copied!';
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Copy failed:', err);
+                });
+        });
+    }
+    
     // 清除按钮
     clearBtn.addEventListener('click', function() {
         curlInput.value = '';
-        jsonOutput.textContent = '// 转换结果将显示在这里';
+        jsonOutput.textContent = '// Conversion result will be displayed here';
         jsonOutput.className = 'json';
-        hljs.highlightElement(jsonOutput);
     });
     
     // 复制按钮
@@ -90,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(() => {
                 // 显示复制成功提示
                 const originalText = this.textContent;
-                this.textContent = '已复制!';
+                this.textContent = 'Copied!';
                 setTimeout(() => {
                     this.textContent = originalText;
                 }, 2000);
@@ -107,26 +121,25 @@ document.addEventListener('DOMContentLoaded', function() {
             if (jsonOutput.className.includes('json')) {
                 const jsonObj = JSON.parse(jsonOutput.textContent);
                 jsonOutput.textContent = JSON.stringify(jsonObj, null, 2);
-                hljs.highlightElement(jsonOutput);
             }
         } catch (error) {
-            console.error('格式化失败:', error);
+            console.error('Format failed:', error);
         }
     });
     
     // 转换按钮
     convertBtn.addEventListener('click', function() {
         const curlCommand = curlInput.value.trim();
-        console.log('用户输入的curl命令:', curlCommand);
+        console.log('User input curl command:', curlCommand);
         
         if (!curlCommand) {
-            showNotification('请输入curl命令', 'error');
+            showNotification('Please enter a curl command', 'error');
             return;
         }
         
         // 显示加载状态
         convertBtn.disabled = true;
-        convertBtn.textContent = '转换中...';
+        convertBtn.textContent = 'Converting...';
         
         const format = outputFormat.value;
         
@@ -168,51 +181,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 const formattedJson = JSON.stringify(data, null, 4);
                 jsonOutput.textContent = formattedJson;
                 jsonOutput.className = 'json';
-                outputTitle.textContent = 'JSON结果';
+                outputTitle.textContent = 'JSON Result';
             } else {
-                // 显示代码
-                outputTitle.textContent = `${format.toUpperCase()} 代码`;
+                // Display the language
+                outputTitle.textContent = `${format.toUpperCase()}`;
                 if (data.code) {
                     jsonOutput.textContent = data.code;
                     jsonOutput.className = format;
                 } else if (data.error) {
                     jsonOutput.textContent = `// Error: ${data.error}`;
-                    showNotification('转换失败: ' + data.error, 'error');
+                    showNotification('Conversion failed: ' + data.error, 'error');
                     convertBtn.disabled = false;
-                    convertBtn.textContent = '转换';
+                    convertBtn.textContent = 'Convert';
                     return;
                 } else {
-                    jsonOutput.textContent = '// 无法解析响应数据';
-                    showNotification('转换失败: 无法解析响应数据', 'error');
+                    jsonOutput.textContent = '// Unable to parse response data';
+                    showNotification('Conversion failed: Unable to parse response data', 'error');
                     convertBtn.disabled = false;
-                    convertBtn.textContent = '转换';
+                    convertBtn.textContent = 'Convert';
                     return;
                 }
             }
             
-            // 安全地使用highlight.js
-            if (typeof hljs !== 'undefined') {
-                try {
-                    hljs.highlightElement(jsonOutput);
-                } catch (e) {
-                    console.error('代码高亮失败:', e);
-                }
-            }
-            
-            showNotification('转换成功', 'success');
+            showNotification('Conversion successful', 'success');
             
             // 恢复按钮状态
             convertBtn.disabled = false;
-            convertBtn.textContent = '转换';
+            convertBtn.textContent = 'Convert';
         })
         .catch(error => {
-            console.error('请求出错:', error);
-            showNotification('转换失败: ' + error.message, 'error');
-            jsonOutput.textContent = '转换失败，请检查您的curl命令是否正确。';
+            console.error('Request error:', error);
+            showNotification('Conversion failed: ' + error.message, 'error');
+            jsonOutput.textContent = 'Conversion failed. Please check if your curl command is correct.';
             
             // 恢复按钮状态
             convertBtn.disabled = false;
-            convertBtn.textContent = '转换';
+            convertBtn.textContent = 'Convert';
         });
     });
     
@@ -304,8 +308,7 @@ if ($err) {
     // 清除代码按钮
     clearCodeBtn.addEventListener('click', function() {
         codeInput.value = '';
-        curlOutput.textContent = '// Curl命令将显示在这里';
-        hljs.highlightElement(curlOutput);
+        curlOutput.textContent = '// Curl command will be displayed here';
     });
     
     // 复制Curl按钮
@@ -315,7 +318,7 @@ if ($err) {
             .then(() => {
                 // 显示复制成功提示
                 const originalText = this.textContent;
-                this.textContent = '已复制!';
+                this.textContent = 'Copied!';
                 setTimeout(() => {
                     this.textContent = originalText;
                 }, 2000);
@@ -329,16 +332,16 @@ if ($err) {
     convertCodeBtn.addEventListener('click', function() {
         const code = codeInput.value.trim();
         const language = codeLanguage.value;
-        console.log(`用户输入的${language}代码:`, code);
+        console.log(`User input ${language} code:`, code);
         
         if (!code) {
-            showNotification('请输入代码', 'error');
+            showNotification('Please enter code', 'error');
             return;
         }
         
         // 显示加载状态
         convertCodeBtn.disabled = true;
-        convertCodeBtn.textContent = '转换中...';
+        convertCodeBtn.textContent = 'Converting...';
         
         // 准备发送的数据
         const requestData = {
@@ -348,7 +351,7 @@ if ($err) {
         console.log('准备发送的数据:', requestData);
         
         // 发送请求到后端API
-        console.log('发送请求到: /api/reverse');
+        console.log('Sending request to: /api/reverse');
         fetch('/api/reverse', {
             method: 'POST',
             headers: {
@@ -367,10 +370,10 @@ if ($err) {
             console.log('收到响应数据:', data);
             
             if (!data.success) {
-                showNotification('转换失败: ' + (data.message || '未知错误'), 'error');
-                curlOutput.textContent = '转换失败，请检查您的代码是否正确。';
+                showNotification('Conversion failed: ' + (data.message || 'Unknown error'), 'error');
+                curlOutput.textContent = 'Conversion failed. Please check if your code is correct.';
                 convertCodeBtn.disabled = false;
-                convertCodeBtn.textContent = '转换';
+                convertCodeBtn.textContent = 'Convert';
                 return;
             }
             
@@ -378,35 +381,21 @@ if ($err) {
             curlOutput.textContent = data.command;
             curlOutput.className = 'bash';
             
-            // 安全地使用highlight.js
-            if (typeof hljs !== 'undefined') {
-                try {
-                    hljs.highlightElement(curlOutput);
-                } catch (e) {
-                    console.error('代码高亮失败:', e);
-                }
-            }
-            
-            showNotification('转换成功', 'success');
+            showNotification('Conversion successful', 'success');
             
             // 恢复按钮状态
             convertCodeBtn.disabled = false;
-            convertCodeBtn.textContent = '转换';
+            convertCodeBtn.textContent = 'Convert';
         })
         .catch(error => {
             console.error('请求出错:', error);
-            showNotification('转换失败: ' + error.message, 'error');
-            curlOutput.textContent = '转换失败，请检查您的代码是否正确。';
+            showNotification('Conversion failed: ' + error.message, 'error');
+            curlOutput.textContent = 'Conversion failed. Please check if your code is correct.';
             
             // 恢复按钮状态
             convertCodeBtn.disabled = false;
-            convertCodeBtn.textContent = '转换';
+            convertCodeBtn.textContent = 'Convert';
         });
-    });
-    
-    // 初始化代码高亮
-    document.querySelectorAll('pre code').forEach(block => {
-        hljs.highlightElement(block);
     });
     
     // 显示通知函数

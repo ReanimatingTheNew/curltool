@@ -1,0 +1,295 @@
+/* 教程页面专用样式 */
+.tutorial-section {
+    padding: 60px 0;
+    background-color: #f9fafc;
+}
+
+.tutorial-header {
+    margin-bottom: 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tutorial-header h1 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+.tutorial-header .meta {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* 目录样式 */
+.table-of-contents {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 30px;
+    margin-bottom: 40px;
+    position: sticky;
+    top: 100px;
+    width: 260px;
+    float: right;
+    margin-left: 40px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.table-of-contents h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table-of-contents ul {
+    list-style-type: none;
+}
+
+.table-of-contents li {
+    margin-bottom: 12px;
+}
+
+.table-of-contents a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: block;
+    padding: 5px 0;
+    font-size: 0.95rem;
+}
+
+.table-of-contents a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* 文章内容样式 */
+.tutorial-content {
+    margin-bottom: 60px;
+    line-height: 1.8;
+    max-width: 780px;
+}
+
+.tutorial-content section {
+    margin-bottom: 70px;
+    padding-bottom: 20px;
+}
+
+.tutorial-content h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    margin-top: 40px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-light);
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.tutorial-content h3 {
+    font-size: 1.4rem;
+    margin: 30px 0 20px;
+    color: var(--text-dark);
+}
+
+.tutorial-content p {
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+.tutorial-content ul, 
+.tutorial-content ol {
+    margin-bottom: 25px;
+    padding-left: 25px;
+}
+
+.tutorial-content li {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+/* 代码示例样式 */
+.code-example {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 30px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.code-example h4 {
+    padding: 15px 20px;
+    margin: 0;
+    background-color: var(--primary-light);
+    color: white;
+    font-size: 1.1rem;
+}
+
+.code-example pre {
+    margin: 0;
+    padding: 20px;
+    background-color: var(--code-bg);
+    overflow-x: auto;
+}
+
+.code-example code {
+    color: var(--code-text);
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* 表格样式 */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-sm);
+}
+
+.comparison-table th, 
+.comparison-table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid var(--border-color);
+}
+
+.comparison-table th {
+    background-color: var(--primary-light);
+    color: white;
+    font-weight: 600;
+}
+
+.comparison-table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.comparison-table td {
+    vertical-align: top;
+}
+
+/* CTA部分 */
+.converter-cta {
+    text-align: center;
+    margin: 40px 0;
+    padding: 30px;
+    background-color: var(--primary-light);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+    border-radius: var(--radius-md);
+    color: white;
+}
+
+.converter-cta a.btn-primary {
+    background-color: white;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.converter-cta a.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 相关教程 */
+.related-tutorials {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 25px;
+    margin-top: 40px;
+}
+
+.related-tutorials h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.related-tutorials ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.related-tutorials li {
+    margin-bottom: 15px;
+}
+
+.related-tutorials a {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.2s;
+}
+
+.related-tutorials a:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .table-of-contents {
+        float: none;
+        margin-left: 0;
+        max-width: 100%;
+        position: static;
+    }
+    
+    .tutorial-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .tutorial-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .tutorial-content h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tutorial-section {
+        padding: 20px 0;
+    }
+    
+    .tutorial-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+    }
+    
+    .tutorial-header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .comparison-table th, 
+    .comparison-table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .code-example pre {
+        padding: 15px;
+    }
+    
+    .code-example code {
+        font-size: 0.85rem;
+    }
+}

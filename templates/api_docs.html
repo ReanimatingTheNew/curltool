@@ -4,27 +4,27 @@
 <section class="api-docs-section">
     <div class="container">
         <div class="section-header">
-            <h2 data-i18n="api_title">API文档</h2>
-            <p data-i18n="api_description">本工具提供了简单易用的API接口，可以集成到您的应用程序中用于自动解析和转换curl命令。</p>
+            <h2>API Documentation</h2>
+            <p>This tool provides a simple and easy-to-use API that can be integrated into your application for automated parsing and conversion of curl commands.</p>
         </div>
         
         <div class="api-docs-content">
             <div class="api-section">
-                <h3 data-i18n="api_endpoint_title">API端点</h3>
+                <h3>API Endpoint</h3>
                 <div class="endpoint">
                     <h4>POST /api/convert</h4>
                     <div class="endpoint-details">
-                        <p data-i18n="api_endpoint_desc">使用以下HTTP请求方法和路径访问API：</p>
+                        <p>Use the following HTTP request method and path to access the API:</p>
                         <pre><code class="bash">POST https://curl-to.com/api/convert</code></pre>
                     </div>
                 </div>
             </div>
             
             <div class="api-section">
-                <h3 data-i18n="request_format_title">请求格式</h3>
-                <p data-i18n="request_format_desc">请求体应该为JSON格式，包含一个`curl`字段，其中包含要解析的curl命令字符串：</p>
+                <h3>Request Format</h3>
+                <p>The request body should be in JSON format, containing a `curl` field with the curl command string to be parsed:</p>
                 <div class="request-example">
-                    <h4>请求示例</h4>
+                    <h4>Request Example</h4>
                     <pre><code class="json">{
   "curl": "curl -X POST https://api.example.com/users -H 'Content-Type: application/json' -d '{\"name\":\"John\",\"email\":\"john@example.com\"}'"
 }</code></pre>
@@ -32,16 +32,16 @@
             </div>
             
             <div class="api-section">
-                <h3 data-i18n="response_format_title">响应格式</h3>
-                <p data-i18n="response_format_desc">响应内容是一个结构化的JSON对象，包含以下字段：</p>
+                <h3>Response Format</h3>
+                <p>The response is a structured JSON object containing the following fields:</p>
                 <ul>
-                    <li><strong>method</strong> <span data-i18n="response_method">- HTTP请求方法</span></li>
-                    <li><strong>url</strong> <span data-i18n="response_url">- 请求URL</span></li>
-                    <li><strong>headers</strong> <span data-i18n="response_headers">- 请求头</span></li>
-                    <li><strong>data</strong> <span data-i18n="response_data">- 请求数据</span></li>
+                    <li><strong>method</strong> - HTTP request method</li>
+                    <li><strong>url</strong> - Request URL</li>
+                    <li><strong>headers</strong> - Request headers</li>
+                    <li><strong>data</strong> - Request data</li>
                 </ul>
                 <div class="response-example">
-                    <h4>响应示例</h4>
+                    <h4>Response Example</h4>
                     <pre><code class="json">{
   "method": "POST",
   "url": "https://api.example.com/users",
@@ -57,7 +57,7 @@
             </div>
             
             <div class="api-section">
-                <h3 data-i18n="examples_title">调用示例</h3>
+                <h3>Usage Examples</h3>
                 
                 <div class="code-example">
                     <h4>Python</h4>

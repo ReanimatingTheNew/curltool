@@ -1,38 +1,36 @@
 <!DOCTYPE html>
-<html lang="{{ locale|default('en') }}" class="lang-ready">
+<html lang="en" class="lang-ready">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- TDK优化 -->
-    <title data-i18n="meta_title">CURL Converter | HTTP Request Tool</title>
-    <meta name="description" data-i18n="meta_description" content="Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development. Transform HTTP requests easily.">
-    <meta name="keywords" data-i18n="meta_keywords" content="curl converter,curl to code,API testing,HTTP requests">
+    <title>CURL Converter | HTTP Request Tool</title>
+    <meta name="description" content="Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development. Transform HTTP requests easily.">
+    <meta name="keywords" content="curl converter,curl to code,API testing,HTTP requests">
     
     <!-- 搜索引擎指令 -->
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#4361ee">
     
     <!-- 社交媒体标签 -->
-    <meta property="og:title" data-i18n="og_title" content="CURL Converter | HTTP Request Tool">
-    <meta property="og:description" data-i18n="og_description" content="Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development.">
+    <meta property="og:title" content="CURL Converter | HTTP Request Tool">
+    <meta property="og:description" content="Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://curl-to.com/{{ locale }}">
+    <meta property="og:url" content="https://curl-to.com/">
     <meta property="og:image" content="https://curl-to.com/static/images/curl-converter-og.png">
     
     <!-- Twitter Cards 标签 -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" data-i18n="twitter_title" content="CURL Converter | HTTP Request Tool">
-    <meta name="twitter:description" data-i18n="twitter_description" content="Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development.">
+    <meta name="twitter:title" content="CURL Converter | HTTP Request Tool">
+    <meta name="twitter:description" content="Convert curl commands to Python, JavaScript, PHP and more. Free online tool for API testing and development.">
     <meta name="twitter:image" content="https://curl-to.com/static/images/curl-converter-og.png">
     
     <!-- Canonical tag for SEO -->
     <link rel="canonical" href="https://curl-to.com{{ request.path }}">
     
-    <!-- hreflang tags for internationalization -->
-    {% for lang in ['en', 'zh', 'hi', 'fr', 'de', 'es'] %}
-    <link rel="alternate" hreflang="{{ lang }}" href="https://curl-to.com/{{ lang }}{{ request.path | replace('/' + locale, '') }}">
-    {% endfor %}
-    <link rel="alternate" hreflang="x-default" href="https://curl-to.com/en{{ request.path | replace('/' + locale, '') }}">
+    <!-- No language alternates - English only -->
+    <link rel="alternate" hreflang="en" href="https://curl-to.com{{ request.path }}">
+    <link rel="alternate" hreflang="x-default" href="https://curl-to.com{{ request.path }}">
     
     <!-- favicon -->
     <link rel="icon" href="{{ url_for('static', filename='images/icons/icon.ico') }}" type="image/x-icon">
@@ -45,21 +43,7 @@
     
     <!-- 样式和脚本 -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/new_style.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-dark.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/highlight.min.js" defer></script>
-    
-    <!-- 代码高亮支持的语言 -->
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/json.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/python.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/javascript.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/php.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/java.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/csharp.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/rust.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/swift.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/go.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/ruby.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/languages/bash.min.js" defer></script>
+    <!-- 代码高亮相关内容已移除 -->
     
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
@@ -82,27 +66,14 @@
     <header class="main-header">
         <div class="container">
             <div class="logo">
-                <h1 data-i18n="site_title">CURL Converter</h1>
+                <h1>CURL Converter</h1>
             </div>
             <nav class="main-nav">
-                <ul>
-                    <li><a href="/{{ locale }}" data-i18n="nav_tool">Converter</a></li>
-                    <li><a href="javascript:void(0);" onclick="window.location.href='/examples?locale={{ locale }}'" data-i18n="nav_examples">Examples</a></li>
-                    <li><a href="javascript:void(0);" onclick="window.location.href='/api-docs?locale={{ locale }}'" data-i18n="nav_api">API Docs</a></li>
-                    <li><a href="javascript:void(0);" onclick="window.location.href='/about?locale={{ locale }}'" data-i18n="nav_about">About</a></li>
-                    <li class="language-selector-container">
-                        <div class="language-select-wrapper">
-                            <select id="language-selector" class="select-styled">
-                                <option value="en" data-i18n="lang_en">English</option>
-                                <option value="zh" data-i18n="lang_zh">中文</option>
-                                <option value="hi" data-i18n="lang_hi">हिन्दी</option>
-                                <option value="fr" data-i18n="lang_fr">Français</option>
-                                <option value="de" data-i18n="lang_de">Deutsch</option>
-                                <option value="es" data-i18n="lang_es">Español</option>
-                            </select>
-                            <div class="select-arrow"></div>
-                        </div>
-                    </li>
+                <ul class="nav-right">
+                    <li><a href="/">Online Converter</a></li>
+                    <li><a href="/api-docs">API Docs</a></li>
+                    <li><a href="/examples">Examples</a></li>
+                    <li><a href="/about">About</a></li>
                 </ul>
             </nav>
         </div>
@@ -114,185 +85,34 @@
     
     <footer>
         <div class="container">
-            <p><span data-i18n="footer_copyright">© 2025 CURL Converter</span> | <a href="/about?locale={{ locale }}" data-i18n="footer_about">About Us</a> | <a href="/api-docs?locale={{ locale }}" data-i18n="footer_api">API Docs</a></p>
-            <div class="external-links">
-                <!-- External links with security attributes -->
-                <a href="https://github.com/curl-converter/website" target="_blank" rel="noopener noreferrer">GitHub</a> <span class="link-separator">|</span>
-                <a href="https://twitter.com/curlconverter" target="_blank" rel="noopener noreferrer nofollow">Twitter</a>
-            </div>
+            <a href="/" class="footer-link">Home</a> |
+            <a href="/about" class="footer-link">About</a> |
+            <a href="/api-docs" class="footer-link">API Docs</a>
+            <!-- 外部链接已移除 -->
         </div>
     </footer>
 
-    <!-- 添加页面加载样式 -->
-    <style>
-        /* 页面加载时的遮罩 */
-        .page-loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--background-color);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.3s ease;
-        }
-        
-        /* 语言已准备就绪时隐藏遮罩 */
-        .lang-ready .page-loading {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        /* 加载指示器样式 */
-        .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(67, 97, 238, 0.2);
-            border-radius: 50%;
-            border-left-color: var(--primary-color);
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
-    
-    <!-- 页面内容加载遮罩 -->
-    <div class="page-loading">
-        <div class="loading-spinner"></div>
-    </div>
-    
     <!-- 脚本 -->
-    <script src="{{ url_for('static', filename='js/translations.js') }}"></script>
     <script>
-        // 存储当前语言
-        const currentLocale = "{{ locale|default('en') }}";
-        
-        // 在页面完全加载前隐藏内容
-        document.documentElement.classList.remove('lang-ready');
-        
+        // 等待页面加载完成
         document.addEventListener('DOMContentLoaded', function() {
-            // 初始化语言
-            setLanguage(currentLocale);
-            
-            // 设置语言选择器的初始值
-            document.getElementById('language-selector').value = currentLocale;
-            
-            // 标记语言已准备就绪，显示页面内容
-            setTimeout(() => {
-                document.documentElement.classList.add('lang-ready');
-            }, 100);
-            
-            // 监听语言切换事件
-            document.getElementById('language-selector').addEventListener('change', function(e) {
-                // 显示加载状态
-                document.documentElement.classList.remove('lang-ready');
+            // 主题切换
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', savedTheme);
                 
-                const newLocale = e.target.value;
-                // 获取当前URL，保留参数
-                const currentUrl = new URL(window.location.href);
-                
-                // 短暂延迟以显示加载状态
-                setTimeout(() => {
-                    // 检查是否在根路径上
-                    if (window.location.pathname === '/' || window.location.pathname === '/' + currentLocale) {
-                        // 如果在主页，直接导航到新语言的主页
-                        window.location.href = '/' + newLocale;
-                    } else {
-                        // 否则保留当前路径，只更新locale参数
-                        currentUrl.searchParams.set('locale', newLocale);
-                        window.location.href = currentUrl.toString();
-                    }
-                }, 50);
-            });
-            
-            // 高亮当前页面导航
-            const currentPage = window.location.pathname;
-            document.querySelectorAll('.main-nav a').forEach(link => {
-                if (currentPage === link.getAttribute('href')) {
-                    link.classList.add('active');
-                }
-            });
+                themeToggle.addEventListener('click', function() {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                });
+            }
         });
-        
-        // 设置页面语言
-        function setLanguage(lang) {
-            // 更新HTML lang属性
-            document.documentElement.lang = lang;
-            
-            // 更新页面上所有带有data-i18n属性的元素
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-            
-            // 更新表单元素的placeholder和value
-            const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
-            placeholders.forEach(element => {
-                const key = element.getAttribute('data-i18n-placeholder');
-                if (translations[lang] && translations[lang][key]) {
-                    element.placeholder = translations[lang][key];
-                }
-            });
-            
-            // 更新meta标签
-            updateMetaTags(lang);
-        }
-        
-        // 更新meta标签和SEO相关信息
-        function updateMetaTags(lang) {
-            if (!translations[lang]) return;
-            
-            // 更新标题
-            if (translations[lang]['meta_title']) {
-                document.title = translations[lang]['meta_title'];
-            }
-            
-            // 更新meta描述
-            const metaDescription = document.querySelector('meta[name="description"]');
-            if (metaDescription && translations[lang]['meta_description']) {
-                metaDescription.content = translations[lang]['meta_description'];
-            }
-            
-            // 更新meta关键词
-            const metaKeywords = document.querySelector('meta[name="keywords"]');
-            if (metaKeywords && translations[lang]['meta_keywords']) {
-                metaKeywords.content = translations[lang]['meta_keywords'];
-            }
-            
-            // 更新Open Graph标签
-            const ogTitle = document.querySelector('meta[property="og:title"]');
-            if (ogTitle && translations[lang]['og_title']) {
-                ogTitle.content = translations[lang]['og_title'];
-            }
-            
-            const ogDescription = document.querySelector('meta[property="og:description"]');
-            if (ogDescription && translations[lang]['og_description']) {
-                ogDescription.content = translations[lang]['og_description'];
-            }
-            
-            // 更新Twitter Card标签
-            const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-            if (twitterTitle && translations[lang]['twitter_title']) {
-                twitterTitle.content = translations[lang]['twitter_title'];
-            }
-            
-            const twitterDescription = document.querySelector('meta[name="twitter:description"]');
-            if (twitterDescription && translations[lang]['twitter_description']) {
-                twitterDescription.content = translations[lang]['twitter_description'];
-            }
-        }
     </script>
     {% block scripts %}{% endblock %}
-
 
     <div style="display:none">
         <!-- Google tag (gtag.js) -->

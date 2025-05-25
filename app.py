@@ -9,148 +9,92 @@ from curl_to_code_main import convert_curl_to_code, SUPPORTED_LANGUAGES
 from new_parse_curl import parse_curl, parse_curl_original
 
 app = Flask(__name__)
-CORS(app)  # 启用跨域支持
-
-# 支持的语言列表
-SUPPORTED_LOCALES = ['en', 'zh', 'hi', 'fr', 'de', 'es']
-DEFAULT_LOCALE = 'en'
+CORS(app)  # Enable CORS
 
 # parse_curl函数已经从new_parse_curl.py导入
 
 @app.route('/')
 def index():
-    """渲染主页，默认使用英语"""
-    return redirect(url_for('localized_converter', locale=DEFAULT_LOCALE))
-
-@app.route('/<locale>')
-def localized_converter(locale):
-    """根据语言渲染转换器页面"""
-    if locale not in SUPPORTED_LOCALES:
-        return redirect(url_for('localized_converter', locale=DEFAULT_LOCALE))
-    return render_template('new_index.html', locale=locale)
+    """Render the main page"""
+    return render_template('new_index.html')
 
 @app.route('/about')
 def about():
-    """关于我们页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('about.html', locale=locale)
+    """About page"""
+    return render_template('about.html')
 
 @app.route('/examples')
 def examples():
-    """示例页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('examples.html', locale=locale)
+    """Examples page"""
+    return render_template('examples.html')
 
 @app.route('/api-docs')
 def api_docs():
-    """API文档页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('api_docs.html', locale=locale)
+    """API docs page"""
+    return render_template('api_docs.html')
 
 # 添加特定编程语言转换页面的路由
 @app.route('/curl-to-python/')
 def curl_to_python():
-    """Python专用转换页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('new_index.html', locale=locale, target_language="python")
+    """Python specific conversion page"""
+    return render_template('new_index.html', target_language="python")
 
 @app.route('/curl-to-javascript/')
 def curl_to_javascript():
-    """JavaScript专用转换页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('new_index.html', locale=locale, target_language="javascript")
+    """JavaScript specific conversion page"""
+    return render_template('new_index.html', target_language="javascript")
 
 @app.route('/curl-to-php/')
 def curl_to_php():
-    """PHP专用转换页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('new_index.html', locale=locale, target_language="php")
+    """PHP specific conversion page"""
+    return render_template('new_index.html', target_language="php")
 
 @app.route('/curl-to-java/')
 def curl_to_java():
-    """Java专用转换页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('new_index.html', locale=locale, target_language="java")
+    """Java specific conversion page"""
+    return render_template('new_index.html', target_language="java")
 
 @app.route('/curl-to-csharp/')
 def curl_to_csharp():
-    """C#专用转换页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('new_index.html', locale=locale, target_language="csharp")
+    """C# specific conversion page"""
+    return render_template('new_index.html', target_language="csharp")
 
 @app.route('/curl-to-ruby/')
 def curl_to_ruby():
-    """Ruby专用转换页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('new_index.html', locale=locale, target_language="ruby")
+    """Ruby specific conversion page"""
+    return render_template('new_index.html', target_language="ruby")
 
 @app.route('/curl-to-go/')
 def curl_to_go():
-    """Go专用转换页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('new_index.html', locale=locale, target_language="go")
+    """Go specific conversion page"""
+    return render_template('new_index.html', target_language="go")
 
 @app.route('/curl-to-swift/')
 def curl_to_swift():
-    """Swift专用转换页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('new_index.html', locale=locale, target_language="swift")
+    """Swift specific conversion page"""
+    return render_template('new_index.html', target_language="swift")
 
 @app.route('/curl-to-rust/')
 def curl_to_rust():
-    """Rust专用转换页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('new_index.html', locale=locale, target_language="rust")
+    """Rust specific conversion page"""
+    return render_template('new_index.html', target_language="rust")
 
 # 教程页面路由
 @app.route('/tutorials/curl-to-python/')
 def tutorial_curl_to_python():
-    """CURL to Python教程页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    return render_template('tutorials/curl_to_python.html', locale=locale)
+    """CURL to Python tutorial page"""
+    return render_template('tutorials/curl_to_python.html')
 
 @app.route('/tutorials/curl-authentication-examples/')
 def tutorial_curl_auth():
-    """CURL认证教程页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    # 临时重定向到Python教程，直到页面创建完成
+    """CURL authentication tutorial page"""
+    # Temporary redirect to Python tutorial until the page is created
     return redirect('/tutorials/curl-to-python/')
 
 @app.route('/tutorials/api-testing-with-curl/')
 def tutorial_api_testing():
-    """API测试教程页面"""
-    locale = request.args.get('locale', DEFAULT_LOCALE)
-    if locale not in SUPPORTED_LOCALES:
-        locale = DEFAULT_LOCALE
-    # 临时重定向到Python教程，直到页面创建完成
+    """API testing tutorial page"""
+    # Temporary redirect to Python tutorial until the page is created
     return redirect('/tutorials/curl-to-python/')
 
 @app.route('/old')
