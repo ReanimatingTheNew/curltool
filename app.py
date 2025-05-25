@@ -240,5 +240,12 @@ def reverse_convert_web():
     result = code_to_curl(code, language)
     return jsonify(result)
 
+# 添加一个通用的404错误处理程序，将所有不存在的路径重定向到首页
+@app.errorhandler(404)
+def page_not_found(e):
+    """处理所有404错误，重定向到首页"""
+    print(f"404错误: {request.path} 不存在，重定向到首页")
+    return redirect('/')
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8080)
